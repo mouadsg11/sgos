@@ -1,0 +1,18 @@
+{
+  "appId": "com.sgos.personal",
+  "appName": "SGOS",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#FFFFFF",
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_sgos",
+      "iconColor": "#0EA5E9"
+    }
+  }
+}

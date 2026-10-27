@@ -1,0 +1,1 @@
+{"default":{"identifier":"default","description":"Permissions de SGOS : notifications de rappel à l'heure de chaque carte.","local":true,"windows":["main"],"permissions":["core:default","notification:default"]}}

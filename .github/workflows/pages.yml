@@ -1,0 +1,36 @@
+# Version web (PWA) : publie le dossier app/ sur GitHub Pages.
+# Lancement manuel pour l'instant (onglet Actions → « Publier la version web » → Run workflow) :
+# GitHub Pages n'est pas disponible pour un dépôt privé en compte gratuit.
+# Quand le dépôt sera public : Settings → Pages → Source « GitHub Actions », puis remettre
+# le déclenchement automatique en ajoutant sous « on: » :
+#   push:
+#     branches: [main]
+#     paths: ['app/**', '.github/workflows/pages.yml']
+name: Publier la version web
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deployer:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: app
+      - id: deploiement
+        uses: actions/deploy-pages@v4

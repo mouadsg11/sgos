@@ -1,0 +1,56 @@
+# ---- Compilation et dépendances (se régénèrent) ----
+desktop/src-tauri/target/
+node_modules/
+**/node_modules/
+# page générée par build.py pour le programme Windows (la copie de référence est SGOS.html / app/)
+desktop/dist/
+
+# ---- Données brutes Ciqual (100 Mo) ----
+# aliments-ciqual.js est déjà généré dans source/. Pour les retélécharger : voir README (« Régénérer la table Ciqual »).
+tools/.ciqual/
+
+# ---- Configuration locale de l'ordinateur (contient des chemins personnels) ----
+.claude/
+.mcp.json
+sgos-mcp/hermes-config.yaml
+graphify-out/
+
+# ---- Données personnelles et secrets : ne jamais publier ----
+SGOS-donnees*.json
+assistant.json
+.env
+.env.*
+*.pem
+*.key
+
+# ---- Sauvegardes, brouillons, fichiers temporaires ----
+*.bak
+*.tmp
+_a_supprimer/
+
+# ---- Installateurs : publiés dans une Release GitHub, pas dans le code ----
+SGOS-Installation.exe
+*-setup.exe
+*.msi
+
+# ---- Fichiers système ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Paquet à envoyer aux amis (régénéré) ----
+partage/
+
+# ---- Android : clé de signature et mots de passe (à sauvegarder hors du dépôt) ----
+*.keystore
+mobile/android/keystore.properties
+mobile/www/
+mobile/android/app/build/
+mobile/android/.gradle/
+mobile/assistant.local.json
+
+# ---- Serveur MCP : gardé en local, pas publié ----
+sgos-mcp/
+# ---- Fichier de test ----
+source/html.html
+.mcp.json.exemple

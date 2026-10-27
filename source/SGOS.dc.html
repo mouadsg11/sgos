@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-injected>html,body{background:transparent}</style><script data-omelette-injected>(()=>{{const n=new URLSearchParams(location.search).get("theme");if(n==="light"||n==="dark"){document.documentElement.dataset.theme=n}}{if(new URLSearchParams(location.search).get("_omthumb")==="1"){const n=(f)=>{const g=f.focus;if(!g)return;f.focus=function(h){g.call(this,{...h,preventScroll:true})}};n(HTMLElement.prototype);n(SVGElement.prototype);if(typeof MathMLElement!=="undefined"){n(MathMLElement.prototype)}const d=(f)=>{f.removeAttribute("autofocus");f.inert=true;if(!(f instanceof HTMLElement))f.removeAttribute("tabindex")};const p=(f)=>{if(f.hasAttribute("autofocus"))d(f);for(const g of f.querySelectorAll("[autofocus]")){d(g)}};p(document.documentElement);new MutationObserver((f)=>{for(const g of f){for(const h of g.addedNodes){if(h.nodeType===1)p(h)}}}).observe(document,{childList:true,subtree:true})}}{const n=()=>{try{if(document.querySelector('meta[name="color-scheme"]'))return;const d=getComputedStyle(document.documentElement).getPropertyValue("color-scheme").trim();if(d&&d!=="normal")return;const p=(y)=>{if(!y)return null;const m=getComputedStyle(y).backgroundColor.match(/^rgba?\(\s*(\d+)[,\s]+(\d+)[,\s]+(\d+)(?:[,\s/]+([\d.]+%?))?\s*\)$/);if(!m)return null;const w=m[4]==null?1:parseFloat(m[4])/(m[4].endsWith("%")?100:1);if(w<0.99)return null;return[+m[1],+m[2],+m[3]]};const f=p(document.body)||p(document.documentElement);if(!f)return;const g=(y)=>{const m=y/255;return m<=0.04045?m/12.92:((m+0.055)/1.055)**2.4};const h=0.2126*g(f[0])+0.7152*g(f[1])+0.0722*g(f[2]);document.documentElement.style.setProperty("color-scheme",h<0.4?"dark":"light")}catch{}};if(document.readyState==="complete")n();else window.addEventListener("load",n)}var I=[];var B=false;var K=false;var C=()=>{};if(K===true){try{const n=setTimeout.bind(window);const d=1e4;const p=15;const f=1e4;const g=120000;const h=200;const y=(o)=>{try{let r;if(typeof o==="string")r=o;else if(o instanceof URL)r=o.href;else if(typeof Request!=="undefined"&&o instanceof Request)r=o.url;else return null;if(!r)return null;const l=document.baseURI;const i=new URL(r,l);if(i.protocol!=="http:"&&i.protocol!=="https:")return null;if(i.origin!==new URL(l).origin)return null;return i.origin+i.pathname}catch{return null}};const m=new Map;const w=(o)=>{let r=m.get(o);if(!r){if(m.size>=h){const l=m.keys().next().value;if(l!==undefined)m.delete(l)}r={fails:[],until:0,cooldown:f,hard:false};m.set(o,r)}return r};const R=(o)=>{const r=m.get(o);return r!==undefined&&r.until>Date.now()};const O=(o,r)=>{const l=Date.now();const i=w(o);if(r)i.hard=true;if(i.until>l)return;i.fails.push(l);while(i.fails.length>0&&i.fails[0]<=l-d)i.fails.shift();if(i.fails.length>=p){i.until=l+i.cooldown;if(i.hard)i.cooldown=Math.min(i.cooldown*2,g);i.fails.length=0;try{n(()=>{try{S(true)}catch{}},i.until-l+100)}catch{}console.warn("[omelette] asset circuit breaker: pausing requests to "+o+" for "+Math.round((i.until-l)/1000)+"s after "+p+" failures in "+d/1000+"s")}};const e=(o)=>{m.delete(o)};const t=100;const a=new WeakMap;const u=new Set;let s=null;const S=(o)=>{for(const r of Array.from(u)){try{const l=a.get(r);if(l===undefined){u.delete(r);continue}if(o){const i=y(l);if(i!==null&&R(i))continue}a.delete(r);u.delete(r);if(s!==null)s.call(r,l)}catch{}}};C=()=>{try{m.clear();S(false)}catch{}};document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")C()});const _=window.fetch;if(typeof _==="function"){const o=function(...r){let l=null;try{l=y(r[0])}catch{}if(l!==null&&R(l)){let c;try{if(r[1]&&r[1].signal!==undefined){c=r[1].signal||undefined}else if(typeof Request!=="undefined"&&r[0]instanceof Request){c=r[0].signal||undefined}}catch{c=undefined}return new Promise((k,b)=>{const E=()=>{try{return c.reason!==undefined?c.reason:new DOMException("The operation was aborted.","AbortError")}catch{return new DOMException("The operation was aborted.","AbortError")}};try{if(c&&c.aborted){b(E());return}}catch{}let T=false;const j=()=>{if(T)return;T=true;b(E())};try{if(c)c.addEventListener("abort",j,{once:true})}catch{}n(()=>{if(T)return;T=true;try{if(c)c.removeEventListener("abort",j)}catch{}let L;try{L=new Response(null,{status:429,statusText:"Too Many Requests",headers:{"Retry-After":"10"}})}catch{L={ok:false,status:429}}k(L)},250)})}const i=_.apply(window,r);if(l!==null){const c=l;i.then((k)=>{try{if(k.ok)e(c);else if(k.status===401||k.status===403||k.status===404||k.status===429){O(c,k.status!==404)}}catch{}},()=>{})}return i};window.fetch=o}const v=Object.getOwnPropertyDescriptor(HTMLImageElement.prototype,"src");if(v!==undefined&&v.set!==undefined&&v.get!==undefined){const o=v.set;s=o;Object.defineProperty(HTMLImageElement.prototype,"src",{configurable:true,enumerable:v.enumerable,get:v.get,set(r){const l=`${r}`;try{const i=y(l);if(i!==null&&R(i)){a.set(this,l);if(u.size<t)u.add(this);return}}catch{}try{a.delete(this);u.delete(this)}catch{}o.call(this,l)}})}try{const o=HTMLImageElement.prototype.setAttribute;HTMLImageElement.prototype.setAttribute=function(r,l){if(arguments.length<2){o.apply(this,arguments);return}if(typeof r==="string"&&r.toLowerCase()==="src"){const i=`${l}`;try{const c=y(i);if(c!==null&&R(c)){a.set(this,i);if(u.size<t)u.add(this);return}a.delete(this);u.delete(this)}catch{}o.call(this,r,i);return}o.call(this,r,l)}}catch{}window.addEventListener("error",(o)=>{try{const r=o.target;if(r instanceof HTMLImageElement){const l=y(r.currentSrc||r.src||"");if(l!==null)O(l,true)}}catch{}},true);window.addEventListener("load",(o)=>{try{const r=o.target;if(r instanceof HTMLImageElement){const l=y(r.currentSrc||r.src||"");if(l!==null)e(l);const i=a.get(r);if(i!==undefined){let c=false;try{c=new URL(i,document.baseURI).href===new URL(r.currentSrc||r.src||"",document.baseURI).href}catch{c=false}if(c){a.delete(r);u.delete(r)}}}}catch{}},true)}catch{}}var J=30000;var G=3000;document.addEventListener("DOMContentLoaded",()=>{const n=window.Babel;const d="om-src-id";if(n&&n.registerPlugin&&!(n.availablePlugins&&n.availablePlugins[d])){n.registerPlugin(d,({types:h})=>({visitor:{JSXOpeningElement(y,m){const w=y.node;if(w.name&&w.name.type==="JSXMemberExpression")return;for(let t=0;t<w.attributes.length;t++){const a=w.attributes[t];if(a.type==="JSXAttribute"&&a.name&&a.name.name==="data-om-id")return}const R=m.file&&m.file.opts&&m.file.opts.filename||"?";const O=w.loc&&w.loc.start;const e=`jsx:${R}:${w.start??0}:${O?O.line:0}:${O?O.column+1:0}`;w.attributes.push(h.jsxAttribute(h.jsxIdentifier("data-om-id"),h.stringLiteral(e)))}}}))}const p="om-text-extract";let f=false;if(B&&n&&n.registerPlugin&&!(n.availablePlugins&&n.availablePlugins[p])){const h=window.React;if(h&&h.useSyncExternalStore&&h.createElement){f=true;const y={};const m=new Set;let w=0;window.__omTextO=y;window.__omTextSet=(e)=>{for(const t in e){const a=e[t];if(a==null)delete y[t];else y[t]=a}w++;m.forEach((t)=>t())};const R=(e)=>{m.add(e);return()=>m.delete(e)};const O=()=>w;window.__OmT=function e(t){h.useSyncExternalStore(R,O,O);return h.createElement("span",{"data-om-text":t.i,className:"__om-t"},t.i in y?y[t.i]:t.children)};n.registerPlugin(p,({types:e})=>{const t={style:1,script:1,noscript:1,textarea:1,title:1,option:1,text:1,tspan:1,textPath:1};const a={placeholder:1,alt:1,title:1,label:1,"aria-label":1,"aria-description":1,"aria-placeholder":1};const u=(o,r)=>e.logicalExpression("??",e.memberExpression(e.logicalExpression("||",e.memberExpression(e.identifier("window"),e.identifier("__omTextO")),e.objectExpression([])),e.stringLiteral(o),true),r);const s=(o)=>o.file&&o.file.opts&&o.file.opts.filename||"?";const S=(o)=>o.file&&o.file.code||"";const _=(o,r)=>{const l=(c)=>c&&c.start!=null&&c.end!=null&&(c.type==="StringLiteral"||c.type==="TemplateLiteral"&&c.expressions.length===0)?[c.start,c.end]:null;const i=l(r);if(i)return i;if(r&&r.type==="Identifier"){const c=o.scope.getBinding(r.name);if(c&&c.constant&&c.path.node.type==="VariableDeclarator"){return l(c.path.node.init)}}return null};const v=(o,r,l)=>{const i=o.node;let c=false;const k=(E,T)=>{c=true;return e.jsxElement(e.jsxOpeningElement(e.jsxIdentifier("__OmT"),[e.jsxAttribute(e.jsxIdentifier("i"),e.stringLiteral(E))],false),e.jsxClosingElement(e.jsxIdentifier("__OmT")),[T],false)};const b=i.children.map((E)=>{if(E.type==="JSXText"){if(E.start==null||E.end==null)return E;const T=l.slice(E.start,E.end);const j=T.length-T.trimStart().length;const L=T.length-T.trimEnd().length;if(j+L>=T.length)return E;return k(`txt:${r}:${E.start+j}:${E.end-L}`,E)}if(E.type==="JSXExpressionContainer"){const T=_(o,E.expression);if(T)return k(`str:${r}:${T[0]}:${T[1]}`,E)}return E});if(c)i.children=b};return{visitor:{JSXOpeningElement(o,r){const l=o.node;const i=s(r);const c={};for(let k=0;k<l.attributes.length;k++){const b=l.attributes[k];if(b.type!=="JSXAttribute"||!b.name)continue;const E=b.name.name;if(!a[E])continue;if(!b.value||b.value.type!=="StringLiteral")continue;if(b.value.start==null||b.value.end==null)continue;const T=`txt:${i}:${b.value.start}:${b.value.end}`;c[E]=T;b.value=e.jsxExpressionContainer(u(T,e.stringLiteral(b.value.value)))}if(Object.keys(c).length){l.attributes.push(e.jsxAttribute(e.jsxIdentifier("data-om-text-attrs"),e.stringLiteral(JSON.stringify(c))))}},JSXElement(o,r){const l=o.node.openingElement;const i=l&&l.name&&l.name.name;if(i==="__OmT")return;if(typeof i==="string"&&t[i])return;v(o,s(r),S(r))},JSXFragment(o,r){v(o,s(r),S(r))}}}})}}const g=f?["transform-react-jsx-source",d,p]:["transform-react-jsx-source",d];document.querySelectorAll('script[type="text/babel"],script[type="text/jsx"]').forEach((h,y)=>{const m=h.getAttribute("data-plugins")||"";const w=g.filter((R)=>m.indexOf(R)<0);if(w.length){h.setAttribute("data-plugins",m?`${m},${w.join(",")}`:w.join(","))}if(!h.hasAttribute("data-filename")){h.setAttribute("data-filename",h.getAttribute("src")||`inline-${y}`)}})});var A=window.parent;var U="not editable here — open the project in the Claude Design editor to save";var W=()=>Promise.resolve({persisted:false,noHost:true,reason:U});var H=W;var M="data/storage.json";var z=()=>{try{const n=new URL(document.baseURI);const d=n.pathname.match(/\/projects\/([^/]+)\/serve\//);if(d)return d[1];return n.hostname.split(".")[0]||""}catch{return location.hostname.split(".")[0]||""}};var Z=()=>{try{const n=new URL(document.baseURI);const d=n.pathname.indexOf("/serve/");if(d>=0)return n.origin+n.pathname.slice(0,d+"/serve/".length)+M}catch{}return"./"+M};var x=null;var N=()=>{if(!x){x=fetch(Z(),{cache:"no-store"}).then((n)=>{if(n.ok)return n.text();return n.status===404?"":null}).catch(()=>null).then((n)=>{if(n===null){x=null;return null}const d=new Map;if(!n)return d;let p;try{p=JSON.parse(n)}catch{console.warn("[omelette.storage] "+M+" is not valid JSON; treating the store as unreadable so a save cannot overwrite the "+"hand-edited bytes. Fix the JSON (or delete the file) to re-enable persistence.");x=null;return null}if(p===null||typeof p!=="object"||Array.isArray(p)){console.warn("[omelette.storage] "+M+" doesn't hold a JSON object; treating the store as unreadable so a save cannot "+"overwrite the hand-edited bytes. Make the top level a JSON object to re-enable persistence.");x=null;return null}const f=p;if("data"in f){const g=f.data;if(g===null||typeof g!=="object"||Array.isArray(g)){console.warn("[omelette.storage] "+M+' has a "data" field that is not a JSON object; treating the store as unreadable so a '+'save cannot overwrite the hand-edited bytes. Make "data" a JSON object to re-enable persistence.');x=null;return null}const h=f._meta;const y=h!==null&&typeof h==="object"?h.project:undefined;if(typeof y==="string"&&y!==""&&y!==z())return d;for(const m of Object.keys(g))d.set(m,g[m]);return d}for(const g of Object.keys(f)){if(g!=="_meta")d.set(g,f[g])}return d})}return x};var F=(n)=>H(M,JSON.stringify({_meta:{project:z(),version:1},data:Object.fromEntries(n)},null,2));var D=Promise.resolve();var $=(n)=>{const d=D.then(n);D=d.then(()=>{return},()=>{return});return d};var V=/sk-(?:ant-)?[A-Za-z0-9_-]{16,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{20,}|xox[a-z]-[A-Za-z0-9][A-Za-z0-9-]{9,}|AIza[0-9A-Za-z_-]{30,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/;var Y=/password|passwd|secret|api[_-]?key|access[_-]?token|auth[_-]?token|credential/i;var Q=(n,d,p)=>{if(V.test(d)||Y.test(n)&&typeof p==="string"&&p.length>=8){console.warn('[omelette.storage] the value for "'+n+'" looks like a credential. The storage file is a plaintext project file — visible to '+"everyone with project access and copied when the project is duplicated. Do not store secrets here.")}};var q={persisted:false,reason:"could not load the existing store — not overwriting it"};var X={persisted:false,reason:"stored value changed since a failed read — re-read this key before saving"};var P=new Set;var ee={get:(n)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.get: key must be a string"))}return $(N).then((d)=>{if(d===null){P.add(n);return null}P.delete(n);if(!d.has(n))return null;const p=d.get(n);return p==null?null:JSON.parse(JSON.stringify(p))})},set:(n,d)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.set: key must be a string"))}let p;try{p=JSON.stringify(d)}catch(g){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable ("+String(g)+")"))}if(p===undefined){return Promise.reject(new TypeError("storage.set: value must be JSON-serializable"))}Q(n,p,d);const f=JSON.parse(p);return $(()=>N().then((g)=>{if(g===null)return q;if(P.has(n)){if(g.has(n))return X;P.delete(n)}g.set(n,f);return F(g)}))},delete:(n)=>{if(typeof n!=="string"){return Promise.reject(new TypeError("storage.delete: key must be a string"))}return $(()=>N().then((d)=>{if(d===null)return q;if(P.has(n)){if(d.has(n))return X;P.delete(n)}d.delete(n);return F(d)}))},keys:()=>$(N).then((n)=>n===null?[]:Array.from(n.keys()))};window.omelette={writeFile:(n,d)=>H(n,d).then((p)=>{if(!p.persisted&&!p.noHost){throw new Error(p.reason||"write failed")}}),storage:ee};if(A&&A!==window){const n=(e,t)=>{try{A.postMessage({__omelette_log:true,type:e,data:t},"*")}catch{}};["log","warn","error"].forEach((e)=>{const t=console[e];console[e]=(...a)=>{const u=a.map((s)=>{try{return typeof s==="object"?JSON.stringify(s):String(s)}catch{try{return String(s)}catch{return"[unstringifiable]"}}}).join(" ");n(e,u);t.apply(console,a)}});window.addEventListener("error",(e)=>{const t=e.target;if(t&&t!==window&&t.tagName){const a=t.src||t.href||"";n("resource_error",`${t.tagName} failed to load: ${a}`)}else{n("error",`${e.message||"Unknown error"} at ${e.filename||"?"}:${e.lineno||0}:${e.colno||0}`)}},true);window.addEventListener("unhandledrejection",(e)=>{const t=e.reason;const a=t instanceof Error?`${t.message} ${t.stack}`:String(t);n("error",`Unhandled rejection: ${a}`)});window.addEventListener("click",(e)=>{if(e.defaultPrevented||e.button!==0)return;if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;const t=e.composedPath?e.composedPath():[];const a=["button","input","select","textarea","summary","label"];let u=null;for(const v of t){if(!(v instanceof Element))continue;if(v.localName==="a"){if(!(v instanceof HTMLAnchorElement))return;u=v;break}if(a.indexOf(v.localName)!==-1)return}if(!u)return;if(u.isContentEditable)return;const s=u.closest("[contenteditable]");if(s&&s.getAttribute("contenteditable")!=="false")return;const S=(u.getAttribute("target")||"_self").toLowerCase();if(S!=="_self"&&S!=="_top"&&S!=="_parent")return;let _;try{_=new URL(u.href)}catch{return}if(_.protocol!=="http:"&&_.protocol!=="https:")return;if(location.origin==="null")return;if(_.origin===location.origin)return;e.preventDefault();window.open(_.href,"_blank","noopener,noreferrer")});const d=()=>{try{A.postMessage({type:"omelette:height",height:document.documentElement.scrollHeight},"*")}catch{}};if(window.ResizeObserver)new ResizeObserver(d).observe(document.documentElement);const p=()=>{d();if(!document.querySelector('script[type="text/babel"],script[type="text/jsx"]'))return;const e=()=>document.getElementById("root")||document.querySelector("body > div[id]");const t=e()?.firstElementChild??null;let a=0;const u=()=>{const s=e();if(s&&s.firstElementChild!==t||++a>30){d();return}setTimeout(u,100)};setTimeout(u,100)};if(document.readyState==="complete")p();else window.addEventListener("load",p);const f={};let g=0;const h=(e)=>new Promise((t,a)=>{if(!I.length){a(new Error("claude.complete: no parent origin"));return}const u=`c${++g}`;const s=()=>setTimeout(()=>{delete f[u];a(new Error(`claude.complete: no data for ${J/1000}s`))},J);const S=s();f[u]={resolve:t,reject:a,text:"",t:S,arm:s};try{for(const _ of I){A.postMessage({__om_api:true,id:u,body:e},_)}}catch(_){clearTimeout(S);delete f[u];a(_)}});const y=8;const m=async(e,t)=>{if(!Array.isArray(e.messages)){throw new Error("claude.complete: tools require a messages array")}const a=e.messages.slice();const u={...e,tools:e.tools.map((_)=>{if(_===null||typeof _!=="object")return _;const v={};for(const o of Object.keys(_)){if(typeof _[o]!=="function")v[o]=_[o]}return v})};const s=u.tool_choice;const S=s!=null&&(s.type==="any"||s.type==="tool")?{...u,tool_choice:s.disable_parallel_tool_use!==undefined?{type:"auto",disable_parallel_tool_use:s.disable_parallel_tool_use}:{type:"auto"}}:u;for(let _=0;_<y;_++){const v=await h({..._===0?u:S,messages:a});const o=v.message;const r=o&&Array.isArray(o.content)?o.content:null;const l=r?r.filter((c)=>c?.type==="tool_use"):[];if(o?.stop_reason!=="tool_use"||l.length===0){return v.text}const i=[];for(const c of l){const k=t.get(c.name);if(!k){i.push({type:"tool_result",tool_use_id:c.id,content:`no handler for tool "${c.name}"`,is_error:true});continue}try{const b=await k(c.input);const E=typeof b==="string"?b:O(b)??"";i.push({type:"tool_result",tool_use_id:c.id,content:E})}catch(b){i.push({type:"tool_result",tool_use_id:c.id,content:String(b?.message??b??"tool handler failed"),is_error:true})}}a.push({role:"assistant",content:r},{role:"user",content:i})}throw new Error(`claude.complete: exceeded ${y} tool turns`)};window.claude={complete(e){const t=e;if(t!==null&&typeof t==="object"&&Array.isArray(t.tools)&&t.tools.some((a)=>a!==null&&typeof a==="object"&&typeof a.run==="function")){const a=new Map;for(const u of t.tools){if(u!==null&&typeof u==="object"&&typeof u.run==="function"){a.set(String(u.name),u.run)}}return m(t,a)}return h(e).then((a)=>a.text)}};const w={};let R=0;H=(e,t)=>new Promise((a)=>{if(!I.length){a({persisted:false,noHost:true,reason:U});return}const u=`f${++R}`;const s=setTimeout(()=>{delete w[u];a({persisted:false,noHost:true,reason:U})},G);w[u]={settle:a,t:s};try{for(const S of I){A.postMessage({__om_file:true,id:u,op:"write",path:e,content:t},S)}}catch{clearTimeout(s);delete w[u];a({persisted:false,noHost:true,reason:U})}});const O=(e)=>{try{return JSON.stringify(e)}catch{return JSON.stringify(String(e))}};window.addEventListener("message",(e)=>{if(I.indexOf(e.origin)<0)return;if(e.source!==A)return;const t=e.data;if(!t)return;if(t.type==="omelette-preview-refresh"){if(typeof t.token!=="string"||!/^[0-9a-f.-]+(\.(rc|pr-[0-9]+))?(\.[0-9]+\.[0-9a-f]{16})?$/.test(t.token))return;const s=Math.max(1,Math.floor((t.expiresAt||0)-Date.now()/1000));document.cookie="__Host-omelette-preview="+t.token+"; Path=/; Secure; SameSite=None; Partitioned; Max-Age="+s;C();return}if(t.__om_file_r){const s=w[t.id];if(!s)return;clearTimeout(s.t);delete w[t.id];s.settle(t.ok?{persisted:true}:{persisted:false,reason:t.error||"write failed"});return}if(t.__om_api_r){const s=f[t.id];if(!s)return;if(t.error!=null){clearTimeout(s.t);delete f[t.id];s.reject(new Error(t.error));return}if(t.chunk!=null){clearTimeout(s.t);s.t=s.arm();s.text+=t.chunk;return}if(t.done){clearTimeout(s.t);delete f[t.id];s.resolve({text:t.text!=null?t.text:s.text,message:t.message});return}return}if(!t.__om_eval)return;const a=t;const u=(s)=>{e.source.postMessage({...s,__om_eval_r:1,id:a.id},e.origin)};try{const s=(0,eval)(a.code);if(s&&typeof s.then==="function"){s.then((S)=>u({ok:1,v:O(S)}),(S)=>u({ok:0,e:String(S)}))}else{u({ok:1,v:O(s)})}}catch(s){u({ok:0,e:String(s)})}})}})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script src="./sgos-pwa.js"></script>
+<script src="./sgos-coffre.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sg-surface:#FFFFFF; --sg-sunk:#FBFCFC; --sg-faint:#F2F4F5; --sg-line2:#EFF1F2;
+  --sg-line:#E5E8EA; --sg-border:#DCE0E2; --sg-ink:#02181E; --sg-muted:#5A646B;
+  --sg-muted2:#7A8792; --sg-dim:#8A949B; --sg-dim2:#9AA3A9; --sg-faintest:#AEB5BA;
+  --sg-notag:#C8CDD1; --sg-wash:#F5FAFD; --sg-accentline:#A8DCF0;
+  --sg-accent:#0080A7; --sg-accent2:#00A8E8; --sg-scrim:rgba(14,20,23,.22);
+  --sg-logo:none;
+}
+html[data-sgos="dark"]{
+  --sg-surface:#0A0D0E; --sg-sunk:#0E1214; --sg-faint:#141A1D; --sg-line2:#171D20;
+  --sg-line:#222A2E; --sg-border:#2B3338; --sg-ink:#F0F4F5; --sg-muted:#B4BDC2;
+  --sg-muted2:#98A2A8; --sg-dim:#828C92; --sg-dim2:#8A949A; --sg-faintest:#7A848A;
+  --sg-notag:#394247; --sg-wash:#0A1F28; --sg-accentline:#12536B;
+  --sg-accent:#00A8E8; --sg-accent2:#00A8E8; --sg-scrim:rgba(0,0,0,.62);
+  --sg-logo:brightness(1.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--sg-surface);font-family:Inter,system-ui,sans-serif;color:var(--sg-ink);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+a{color:var(--sg-accent);text-decoration:none}
+a:hover{color:var(--sg-accent2)}
+input,textarea,button,select{font-family:inherit;font-size:inherit;color:inherit}
+input,textarea{background:var(--sg-surface)}
+input::placeholder,textarea::placeholder{color:var(--sg-faintest)}
+::selection{background:var(--sg-accent2);color:#fff}
+:focus-visible{outline:2px solid var(--sg-accent2);outline-offset:2px}
+@keyframes sgIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes sgPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+
+<div style="height:100vh;display:flex;flex-direction:column;overflow:hidden;background:var(--sg-surface)">
+
+  <header style="display:flex;align-items:center;flex-wrap:wrap;gap:16px 18px;padding:12px 22px;min-height:74px;background:var(--sg-surface);color:var(--sg-ink);flex:0 0 auto;border-bottom:1px solid var(--sg-line)">
+    <div style="display:flex;align-items:center;gap:13px;min-width:0">
+      <img src="assets/sgos-mark.png" alt="SGOS" style="height:23px;width:auto;display:block;filter:var(--sg-logo)">
+      <div style="display:flex;flex-direction:column;line-height:1">
+        <span style="font-family:Inter,sans-serif;font-weight:700;font-size:14px;letter-spacing:.24em">SGOS</span>
+        <span style="font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2);margin-top:6px;font-family:Inter,sans-serif;font-weight:400;white-space:nowrap">My Personal Operating System</span>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:6px;margin-left:4px;flex:0 0 auto">
+      <button onClick="{{ prevDay }}" style="width:24px;height:24px;border:none;background:transparent;color:var(--sg-dim2);cursor:pointer;font-size:17px;line-height:1;padding:0" style-hover="color:var(--sg-accent)">‹</button>
+      <div style="min-width:172px;text-align:center">
+        <div style="font-family:Inter,sans-serif;font-size:17px;font-weight:300;letter-spacing:-.005em;text-transform:capitalize;line-height:1">{{ dateLabel }}</div>
+      </div>
+      <button onClick="{{ nextDay }}" style="width:24px;height:24px;border:none;background:transparent;color:var(--sg-dim2);cursor:pointer;font-size:17px;line-height:1;padding:0" style-hover="color:var(--sg-accent)">›</button>
+      <button onClick="{{ goToday }}" style="margin-left:12px;padding:0 0 3px;border:none;border-bottom:1px solid var(--sg-border);background:transparent;color:var(--sg-dim2);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase" style-hover="color:var(--sg-accent);border-color:var(--sg-accent)">Aujourd'hui</button>
+    </div>
+
+    <div style="margin-left:auto;display:flex;gap:20px;align-items:center;flex:0 0 auto">
+      <button onClick="{{ setViewJour }}" style="{{ tabJourStyle }}">Emploi du temps</button>
+      <button onClick="{{ setViewArgent }}" style="{{ tabArgentStyle }}">Argent</button>
+      <button onClick="{{ setViewBilan }}" style="{{ tabBilanStyle }}">Bilans</button>
+      <button onClick="{{ openTeam }}" style="align-self:center;padding:0 0 3px;border:none;border-bottom:1px solid var(--sg-border);background:transparent;color:var(--sg-dim2);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap" style-hover="color:var(--sg-accent);border-color:var(--sg-accent)">Équipe</button>
+      <button onClick="{{ toggleTheme }}" title="{{ themeTitle }}" style="align-self:center;padding:0 0 3px;border:none;border-bottom:1px solid var(--sg-border);background:transparent;color:var(--sg-dim2);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap" style-hover="color:var(--sg-accent);border-color:var(--sg-accent)">{{ themeLabel }}</button>
+    </div>
+  </header>
+
+  <div style="flex:1;display:flex;min-height:0;position:relative">
+
+    <aside onDragOver="{{ onDragOverBacklog }}" onDrop="{{ onDropBacklog }}" style="{{ backlogPaneStyle }}">
+      <div style="padding:22px 20px 18px;border-bottom:1px solid var(--sg-line)">
+        <div style="font-family:Inter,sans-serif;font-weight:700;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--sg-ink)">Hors emploi du temps</div>
+        <div style="font-size:11.5px;color:var(--sg-muted2);margin-top:5px;line-height:1.5">Créez vos cartes ici, puis glissez-les sur l'heure voulue.</div>
+        <div style="display:flex;gap:6px;margin-top:12px">
+          <input value="{{ newTitle }}" onChange="{{ onNewTitle }}" onKeyDown="{{ onNewKey }}" placeholder="Nouvelle carte…" style="flex:1;min-width:0;height:34px;padding:0 10px;border:1px solid var(--sg-border);border-radius:0;background:var(--sg-surface);font-size:13px">
+          <button onClick="{{ addCard }}" style="width:34px;height:34px;border:1px solid var(--sg-accent);background:var(--sg-surface);color:var(--sg-accent);border-radius:0;cursor:pointer;font-size:18px;line-height:1" style-hover="background:var(--sg-accent);color:var(--sg-surface)">+</button>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:10px;align-items:center">
+          <span style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2);font-family:Inter,sans-serif;font-weight:700">Couleur</span>
+          <sc-for list="{{ swatches }}" as="s" hint-placeholder-count="4">
+            <button onClick="{{ s.pick }}" title="{{ s.name }}" style="{{ s.style }}"></button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="flex:1;overflow-y:auto;padding:18px 20px 28px;display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ backlog }}" as="c" hint-placeholder-count="3">
+          <div draggable="true" onDragStart="{{ c.onDragStart }}" onDragEnd="{{ onDragEnd }}" onClick="{{ c.onOpen }}" style="{{ c.chipStyle }}">
+            <div style="display:flex;align-items:flex-start;gap:8px">
+              <div style="flex:1;min-width:0;font-family:Inter,sans-serif;font-weight:400;font-size:13.5px;line-height:1.4;word-break:break-word">{{ c.title }}</div>
+              <span style="font-size:10px;font-family:Inter,sans-serif;color:var(--sg-muted2);letter-spacing:.06em;white-space:nowrap;padding-top:2px">{{ c.durLabel }}</span>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center;margin-top:7px;font-size:10.5px;color:var(--sg-dim)">
+              <sc-if value="{{ c.hasMeta }}" hint-placeholder-val="{{ true }}">
+                <span>{{ c.metaLabel }}</span>
+              </sc-if>
+              <button onClick="{{ c.toggleKeep }}" title="{{ c.keepTitle }}" style="{{ c.keepStyle }}">{{ c.keepLabel }}</button>
+              <span style="margin-left:auto;font-family:Inter,sans-serif;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:8.5px;color:var(--sg-faintest)">glisser →</span>
+            </div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ backlogEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="border:1px dashed var(--sg-border);border-radius:0;padding:22px 14px;text-align:center;color:var(--sg-dim2);font-size:12px;line-height:1.6">Aucune carte en attente.<br>Déposez ici pour retirer une carte du planning.</div>
+        </sc-if>
+      </div>
+    </aside>
+
+    <main ref="{{ mainRef }}" style="flex:1;min-width:0;overflow-y:auto;background:var(--sg-surface)">
+
+      <sc-if value="{{ viewJour }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:30px 34px 76px">
+          <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:14px;flex-wrap:wrap">
+            <div style="font-family:Inter,sans-serif;font-weight:700;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--sg-ink)">Journée · 24 h</div>
+            <div style="font-size:11.5px;color:var(--sg-muted2);white-space:nowrap">{{ daySummary }}</div>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:18px">
+              <button onClick="{{ toggleBgPanel }}" style="padding:0 0 3px;border:none;border-bottom:1px solid var(--sg-border);background:transparent;color:var(--sg-dim2);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap" style-hover="color:var(--sg-accent);border-color:var(--sg-accent)">Arrière-plan</button>
+              <span style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2);white-space:nowrap">Note du jour</span>
+              <span style="font-family:Inter,sans-serif;font-size:31px;font-weight:200;letter-spacing:-.02em;color:var(--sg-accent);line-height:1">{{ dayNote }}</span>
+            </div>
+          </div>
+
+          <sc-if value="{{ bgOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--sg-faint)">
+              <span style="font-family:Inter,sans-serif;font-weight:700;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--sg-dim2);margin-right:4px">Arrière-plan</span>
+              <sc-for list="{{ bgOpts }}" as="b" hint-placeholder-count="6">
+                <button onClick="{{ b.pick }}" style="{{ b.style }}">{{ b.label }}</button>
+              </sc-for>
+              <label style="height:30px;padding:0 12px;display:inline-flex;align-items:center;border:1px dashed var(--sg-border);color:var(--sg-dim2);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap" style-hover="border-color:var(--sg-accent);color:var(--sg-accent)">
+                Choisir une image
+                <input type="file" accept="image/*" onChange="{{ onBgImage }}" style="display:none">
+              </label>
+            </div>
+          </sc-if>
+
+          <div style="{{ gridWrapStyle }}">
+            <div style="{{ hourColStyle }}">
+              <sc-for list="{{ hours }}" as="h" hint-placeholder-count="24">
+                <div style="{{ h.labelStyle }}">{{ h.label }}</div>
+              </sc-for>
+            </div>
+            <div onDragOver="{{ onDragOverGrid }}" onDrop="{{ onDropGrid }}" style="{{ gridStyle }}">
+              <div style="{{ bgScrimStyle }}"></div>
+              <sc-for list="{{ hours }}" as="h" hint-placeholder-count="24">
+                <div style="{{ h.rowStyle }}"></div>
+              </sc-for>
+              <sc-if value="{{ showNow }}" hint-placeholder-val="{{ false }}">
+                <div style="{{ nowStyle }}"></div>
+              </sc-if>
+              <sc-for list="{{ placed }}" as="c" hint-placeholder-count="0">
+                <div draggable="true" onDragStart="{{ c.onDragStart }}" onDragEnd="{{ onDragEnd }}" onClick="{{ c.onOpen }}" style="{{ c.style }}">
+                  <div style="display:flex;align-items:center;gap:7px;min-width:0">
+                    <span style="{{ c.dotStyle }}"></span>
+                    <span style="{{ c.titleStyle }}">{{ c.title }}</span>
+                    <span style="margin-left:auto;font-family:Inter,sans-serif;font-size:10px;color:var(--sg-muted2);letter-spacing:.06em;white-space:nowrap">{{ c.timeLabel }}</span>
+                  </div>
+                  <sc-if value="{{ c.showBody }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:6px;font-size:11px;color:var(--sg-dim);display:flex;gap:10px;flex-wrap:wrap">
+                      <span>{{ c.metaLabel }}</span>
+                      <span style="{{ c.statusChipStyle }}">{{ c.statusLabel }}</span>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ c.hasSubs }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;left:0;right:0;bottom:0;height:3px;display:flex;gap:1px;padding:0 1px 1px">
+                      <sc-for list="{{ c.subBars }}" as="b" hint-placeholder-count="0">
+                        <span style="{{ b.style }}"></span>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <div onMouseDown="{{ c.onResize }}" style="position:absolute;left:0;right:0;bottom:-2px;height:8px;cursor:ns-resize"></div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ viewArgent }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:30px 34px 76px;max-width:1040px">
+
+          <div style="border-top:1px solid var(--sg-ink);padding-top:18px;display:flex;gap:26px;align-items:flex-end;flex-wrap:wrap">
+            <div>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2);margin-bottom:9px">Revenu</div>
+              <div style="display:flex;align-items:baseline;gap:8px">
+                <input type="number" step="50" value="{{ incomeValue }}" onChange="{{ onIncome }}" style="width:170px;height:44px;padding:0 12px;border:1px solid var(--sg-border);font-family:Inter,sans-serif;font-size:25px;font-weight:300;letter-spacing:-.02em;background:transparent">
+                <span style="font-family:Inter,sans-serif;font-size:16px;font-weight:300;color:var(--sg-dim)">DH {{ incomePeriodLabel }}</span>
+              </div>
+            </div>
+            <div style="display:flex;border:1px solid var(--sg-border)">
+              <sc-for list="{{ incomeOpts }}" as="p" hint-placeholder-count="3">
+                <button onClick="{{ p.pick }}" style="{{ p.style }}">{{ p.label }}</button>
+              </sc-for>
+            </div>
+            <div style="margin-left:auto;text-align:right">
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2);margin-bottom:7px;white-space:nowrap">Reste à répartir</div>
+              <div style="{{ remainingStyle }}">{{ remainingLabel }}</div>
+              <div style="font-size:11px;color:var(--sg-dim);margin-top:5px">{{ allocatedLabel }} déjà répartis</div>
+            </div>
+          </div>
+          <div style="height:4px;background:var(--sg-faint);margin-top:16px;overflow:hidden">
+            <div style="{{ allocBarStyle }}"></div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap">
+            <span style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2);white-space:nowrap">Jetons — à glisser</span>
+            <sc-for list="{{ moneyTokens }}" as="t" hint-placeholder-count="4">
+              <div draggable="true" onDragStart="{{ t.onDragStart }}" onDragEnd="{{ onDragEnd }}" style="{{ t.style }}">{{ t.label }}</div>
+            </sc-for>
+            <div draggable="true" onDragStart="{{ onCustomDrag }}" onDragEnd="{{ onDragEnd }}" style="{{ customTokenStyle }}">
+              <input value="{{ tokenAmount }}" onChange="{{ onTokenAmount }}" placeholder="autre" style="width:74px;border:none;background:transparent;font-family:Inter,sans-serif;font-size:15px;font-weight:300;padding:0">
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:16px;margin-top:20px">
+            <sc-for list="{{ domains }}" as="d" hint-placeholder-count="0">
+              <div onDragOver="{{ d.onDragOver }}" onDrop="{{ d.onDrop }}" style="{{ d.style }}">
+                <div style="display:flex;align-items:center;gap:9px">
+                  <span style="{{ d.dotStyle }}"></span>
+                  <span style="font-family:Inter,sans-serif;font-weight:600;font-size:13.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ d.name }}</span>
+                  <button onClick="{{ d.remove }}" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:12px;line-height:1">✕</button>
+                </div>
+                <button onClick="{{ d.cyclePrio }}" title="Changer la priorité" style="{{ d.prioStyle }}">{{ d.prioLabel }}</button>
+                <div style="display:flex;align-items:baseline;gap:8px">
+                  <span style="font-family:Inter,sans-serif;font-size:26px;font-weight:200;letter-spacing:-.02em;line-height:1">{{ d.amount }}</span>
+                  <span style="font-family:Inter,sans-serif;font-size:13px;font-weight:300;color:var(--sg-dim)">{{ d.pct }}</span>
+                </div>
+                <div style="height:3px;background:var(--sg-faint);overflow:hidden"><div style="{{ d.barStyle }}"></div></div>
+                <input type="range" min="0" max="{{ d.sliderMax }}" step="10" value="{{ d.slider }}" onChange="{{ d.onSlide }}" style="width:100%;accent-color:var(--sg-accent);margin:0">
+                <div style="display:flex;align-items:center;gap:9px">
+                  <span style="{{ d.realStyle }}">{{ d.realLabel }}</span>
+                  <div style="flex:1;height:2px;background:var(--sg-faint);overflow:hidden"><div style="{{ d.realBarStyle }}"></div></div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <sc-if value="{{ noDomains }}" hint-placeholder-val="{{ true }}">
+            <div style="border:1px dashed var(--sg-border);padding:26px;text-align:center;color:var(--sg-dim2);font-size:12px;margin-top:20px;line-height:1.7">Aucun domaine de vie.<br>Créez-en un ci-dessous (nutrition, investissement, famille…), puis glissez-y des jetons.</div>
+          </sc-if>
+
+          <div style="display:flex;gap:8px;margin-top:18px;align-items:center;flex-wrap:wrap">
+            <input value="{{ dName }}" onChange="{{ onDName }}" onKeyDown="{{ onDNameKey }}" placeholder="Nouveau domaine de vie…" style="flex:1;min-width:190px;height:36px;padding:0 11px;border:1px solid var(--sg-border);font-size:13px;background:transparent">
+            <div style="display:flex;gap:4px">
+              <sc-for list="{{ dSwatches }}" as="s" hint-placeholder-count="6">
+                <button onClick="{{ s.pick }}" style="{{ s.style }}"></button>
+              </sc-for>
+            </div>
+            <button onClick="{{ cycleNewPrio }}" style="height:36px;padding:0 12px;border:1px solid var(--sg-border);background:transparent;color:var(--sg-dim2);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap">{{ dPrioLabel }}</button>
+            <button onClick="{{ addDomain }}" style="height:36px;padding:0 18px;border:1px solid var(--sg-accent);background:transparent;color:var(--sg-accent);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase">Ajouter</button>
+          </div>
+
+          <div style="margin-top:34px;border-top:1px solid var(--sg-ink);padding-top:18px">
+            <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2);white-space:nowrap">Dépenses réelles de la période</div>
+              <span style="font-family:Inter,sans-serif;font-size:23px;font-weight:200;letter-spacing:-.02em;margin-left:auto">{{ realTotalLabel }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;margin-top:16px">
+              <sc-for list="{{ levelRows }}" as="l" hint-placeholder-count="3">
+                <div style="display:flex;align-items:center;gap:12px">
+                  <span style="font-size:12px;min-width:92px">{{ l.label }}</span>
+                  <div style="flex:1;height:4px;background:var(--sg-faint);overflow:hidden"><div style="{{ l.barStyle }}"></div></div>
+                  <span style="font-family:Inter,sans-serif;font-size:13px;font-weight:300;min-width:86px;text-align:right">{{ l.amount }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;margin-top:18px">
+              <sc-for list="{{ expenseRows }}" as="r" hint-placeholder-count="0">
+                <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--sg-faint);font-size:12px">
+                  <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ r.label }}</span>
+                  <span style="color:var(--sg-dim2);white-space:nowrap">{{ r.card }}</span>
+                  <span style="color:var(--sg-dim);white-space:nowrap">{{ r.dom }}</span>
+                  <span style="{{ r.levelStyle }}">{{ r.level }}</span>
+                  <span style="font-family:Inter,sans-serif;font-size:13px;font-weight:300;min-width:82px;text-align:right">{{ r.amount }}</span>
+                </div>
+              </sc-for>
+              <sc-if value="{{ noExpenses }}" hint-placeholder-val="{{ true }}">
+                <span style="font-size:12px;color:var(--sg-dim2);padding:10px 0;line-height:1.7">Aucune dépense saisie. Ouvrez une carte de l'emploi du temps et renseignez la section « Argent dépensé ».</span>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ viewBilan }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:30px 34px 76px;max-width:1000px">
+          <div style="font-family:Inter,sans-serif;font-weight:700;font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:4px">Bilans</div>
+          <div style="font-size:12px;color:var(--sg-muted2);margin-bottom:20px;line-height:1.6">Chaque note compare ce qui était planifié à l'avance avec ce qui a été réellement réalisé, pondéré par la durée et pénalisé par le décalage.</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px">
+            <sc-for list="{{ bilans }}" as="b" hint-placeholder-count="3">
+              <div style="background:var(--sg-surface);border:1px solid var(--sg-line);border-radius:0;padding:18px 18px 16px">
+                <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2)">{{ b.label }}</div>
+                <div style="display:flex;align-items:baseline;gap:6px;margin-top:8px">
+                  <span style="{{ b.noteStyle }}">{{ b.note }}</span>
+                  <span style="font-family:Inter,sans-serif;font-size:13px;color:var(--sg-dim2)">/ 100</span>
+                </div>
+                <div style="height:5px;background:var(--sg-faint);border-radius:0;margin-top:12px;overflow:hidden">
+                  <div style="{{ b.barStyle }}"></div>
+                </div>
+                <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;font-size:11.5px;color:var(--sg-muted)">
+                  <sc-for list="{{ b.stats }}" as="s" hint-placeholder-count="4">
+                    <div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--sg-faint);padding-bottom:5px">
+                      <span>{{ s.k }}</span>
+                      <span style="font-family:Inter,sans-serif;color:var(--sg-ink)">{{ s.v }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="margin-top:26px;background:var(--sg-surface);border:1px solid var(--sg-line);border-radius:0;padding:18px">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);white-space:nowrap">Répartition par étiquette</div>
+              <div style="margin-left:auto;display:flex;border:1px solid var(--sg-line);border-radius:0;overflow:hidden">
+                <sc-for list="{{ periodOpts }}" as="p" hint-placeholder-count="3">
+                  <button onClick="{{ p.pick }}" style="{{ p.style }}">{{ p.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="height:12px;display:flex;border-radius:0;overflow:hidden;background:var(--sg-faint);margin-bottom:16px">
+              <sc-for list="{{ tagStats }}" as="t" hint-placeholder-count="0">
+                <div title="{{ t.name }}" style="{{ t.segStyle }}"></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <sc-for list="{{ tagStats }}" as="t" hint-placeholder-count="0">
+                <div style="display:flex;align-items:center;gap:10px">
+                  <span style="{{ t.dotStyle }}"></span>
+                  <span style="font-size:12.5px;min-width:0;flex:0 1 auto">{{ t.name }}</span>
+                  <div style="flex:1;height:4px;background:var(--sg-faint);border-radius:0;overflow:hidden;margin:0 4px">
+                    <div style="{{ t.barStyle }}"></div>
+                  </div>
+                  <span style="font-family:Inter,sans-serif;font-size:12px;color:var(--sg-muted);white-space:nowrap">{{ t.hours }}</span>
+                  <span style="font-family:Inter,sans-serif;font-size:14px;color:var(--sg-ink);min-width:48px;text-align:right">{{ t.pct }}</span>
+                  <span style="{{ t.rateStyle }}">{{ t.rate }}</span>
+                  <sc-if value="{{ t.removable }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ t.remove }}" title="Supprimer l'étiquette" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:12px;line-height:1">✕</button>
+                  </sc-if>
+                </div>
+              </sc-for>
+              <sc-if value="{{ tagStatsEmpty }}" hint-placeholder-val="{{ true }}">
+                <span style="font-size:12px;color:var(--sg-dim2)">Rien de planifié sur cette période.</span>
+              </sc-if>
+            </div>
+            <sc-if value="{{ hasTopTag }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:16px;border-top:1px solid var(--sg-faint);padding-top:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                <span style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2)">Étiquette la mieux tenue</span>
+                <span style="{{ topTagStyle }}"></span>
+                <span style="font-family:Inter,sans-serif;font-weight:700;font-size:13px">{{ topTagLabel }}</span>
+                <span style="font-size:11.5px;color:var(--sg-muted2)">{{ topTagDetail }}</span>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="margin-top:26px;background:var(--sg-surface);border:1px solid var(--sg-line);border-radius:0;padding:18px">
+            <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:16px">Détail de la période</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px">
+              <sc-for list="{{ detailGroups }}" as="g" hint-placeholder-count="3">
+                <div>
+                  <div style="{{ g.headStyle }}"><span>{{ g.label }}</span><span>{{ g.count }}</span></div>
+                  <div style="display:flex;flex-direction:column;gap:2px;margin-top:8px">
+                    <sc-for list="{{ g.items }}" as="i" hint-placeholder-count="0">
+                      <div onClick="{{ i.open }}" style="padding:8px 4px;border-bottom:1px solid var(--sg-faint);cursor:pointer" style-hover="background:var(--sg-sunk)">
+                        <div style="display:flex;align-items:center;gap:8px">
+                          <span style="{{ i.dotStyle }}"></span>
+                          <span style="font-family:Inter,sans-serif;font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ i.title }}</span>
+                          <span style="font-family:Inter,sans-serif;font-size:10px;color:var(--sg-dim2);white-space:nowrap">{{ i.dur }}</span>
+                        </div>
+                        <div style="font-size:11px;color:var(--sg-dim);margin-top:3px;display:flex;gap:8px;flex-wrap:wrap">
+                          <span>{{ i.when }}</span>
+                          <span style="color:var(--sg-faintest)">{{ i.tags }}</span>
+                        </div>
+                        <sc-if value="{{ i.hasShift }}" hint-placeholder-val="{{ false }}">
+                          <div style="font-size:10.5px;color:var(--sg-ink);margin-top:4px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:9.5px">{{ i.shift }}</div>
+                        </sc-if>
+                      </div>
+                    </sc-for>
+                    <sc-if value="{{ g.empty }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-size:11.5px;color:var(--sg-faintest);padding:8px 4px">Aucune carte.</span>
+                    </sc-if>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="margin-top:26px;background:var(--sg-surface);border:1px solid var(--sg-line);border-radius:0;padding:18px">
+            <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:14px">Semaine en cours</div>
+            <div style="display:flex;gap:10px;align-items:flex-end;height:130px">
+              <sc-for list="{{ weekBars }}" as="d" hint-placeholder-count="7">
+                <div onClick="{{ d.go }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;height:100%;justify-content:flex-end">
+                  <span style="font-family:Inter,sans-serif;font-size:11px;color:var(--sg-ink)">{{ d.note }}</span>
+                  <div style="{{ d.barStyle }}"></div>
+                  <span style="{{ d.dayStyle }}">{{ d.day }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </main>
+
+    <sc-if value="{{ teamOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:var(--sg-scrim);display:flex;justify-content:flex-end" onClick="{{ closeTeam }}">
+        <div onClick="{{ stop }}" style="width:min(460px,96%);background:var(--sg-surface);height:100%;overflow-y:auto;border-left:1px solid var(--sg-line);animation:sgIn .22s ease">
+          <div style="padding:26px 28px 22px;border-bottom:1px solid var(--sg-line);display:flex;align-items:center;gap:12px">
+            <div style="flex:1;min-width:0">
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-dim2);margin-bottom:8px">Environnement partagé</div>
+              <input value="{{ teamName }}" onChange="{{ onTeamName }}" placeholder="Nom de l'environnement" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--sg-line);font-family:Inter,sans-serif;font-size:21px;font-weight:300;letter-spacing:-.015em;padding:0 0 9px">
+            </div>
+            <button onClick="{{ closeTeam }}" style="background:transparent;border:none;color:var(--sg-dim2);width:26px;height:26px;cursor:pointer;font-size:13px;line-height:1">✕</button>
+          </div>
+
+          <div style="padding:26px 28px 52px;display:flex;flex-direction:column;gap:32px">
+            <section>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:10px">Champ partagé</div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <sc-for list="{{ fieldOpts }}" as="o" hint-placeholder-count="4">
+                  <button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button>
+                </sc-for>
+              </div>
+              <textarea value="{{ teamNote }}" onChange="{{ onTeamNote }}" placeholder="Ce que les membres peuvent voir ou faire…" style="width:100%;min-height:62px;margin-top:10px;padding:10px;border:1px solid var(--sg-border);font-size:12.5px;line-height:1.6;resize:vertical;background:transparent"></textarea>
+            </section>
+
+            <section>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:10px">Personnes</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ teamMembers }}" as="m" hint-placeholder-count="0">
+                  <div style="display:flex;gap:10px;align-items:center;border:1px solid var(--sg-line);padding:9px 10px">
+                    <sc-if value="{{ m.hasPhoto }}" hint-placeholder-val="{{ false }}">
+                      <div style="{{ m.photoStyle }}"></div>
+                    </sc-if>
+                    <sc-if value="{{ m.noPhoto }}" hint-placeholder-val="{{ true }}">
+                      <span style="width:34px;height:34px;border-radius:50%;flex:0 0 auto;background:var(--sg-faint);color:var(--sg-accent);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-weight:700;font-size:12px">{{ m.initials }}</span>
+                    </sc-if>
+                    <div style="flex:1;min-width:0">
+                      <div style="font-family:Inter,sans-serif;font-weight:600;font-size:13px">{{ m.name }}</div>
+                      <div style="font-size:11.5px;color:var(--sg-muted2);margin-top:2px">{{ m.role }}</div>
+                    </div>
+                    <button onClick="{{ m.remove }}" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:12px;line-height:1">✕</button>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ noTeamMembers }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:11.5px;color:var(--sg-dim2)">Personne pour l'instant.</span>
+                </sc-if>
+              </div>
+              <div style="border:1px dashed var(--sg-border);padding:11px;margin-top:9px;display:flex;flex-direction:column;gap:7px">
+                <div style="display:flex;gap:7px;align-items:center">
+                  <label style="width:36px;height:36px;border-radius:50%;border:1px dashed var(--sg-border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;overflow:hidden">
+                    <sc-if value="{{ tHasPhoto }}" hint-placeholder-val="{{ false }}">
+                      <div style="{{ tPhotoStyle }}"></div>
+                    </sc-if>
+                    <sc-if value="{{ tNoPhoto }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-size:14px;color:var(--sg-dim2);line-height:1">＋</span>
+                    </sc-if>
+                    <input type="file" accept="image/*" onChange="{{ onTPhoto }}" style="display:none">
+                  </label>
+                  <input value="{{ tName }}" onChange="{{ onTName }}" placeholder="Nom" style="flex:1;min-width:0;height:32px;padding:0 9px;border:1px solid var(--sg-border);font-size:12.5px;background:transparent">
+                </div>
+                <div style="display:flex;gap:7px">
+                  <input value="{{ tRole }}" onChange="{{ onTRole }}" placeholder="Rôle / lien (optionnel)" style="flex:1;min-width:0;height:32px;padding:0 9px;border:1px solid var(--sg-border);font-size:12.5px;background:transparent">
+                  <button onClick="{{ addTeamMember }}" style="padding:0 14px;height:32px;border:1px solid var(--sg-accent);background:transparent;color:var(--sg-accent);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase">Ajouter</button>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:10px">Activités proposées</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ proposals }}" as="p" hint-placeholder-count="0">
+                  <div style="border:1px solid var(--sg-line);padding:11px 12px">
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <span style="font-family:Inter,sans-serif;font-weight:600;font-size:13px;flex:1;min-width:0">{{ p.title }}</span>
+                      <span style="{{ p.statusStyle }}">{{ p.status }}</span>
+                    </div>
+                    <div style="font-size:11.5px;color:var(--sg-muted2);margin-top:4px;line-height:1.5">{{ p.meta }}</div>
+                    <sc-if value="{{ p.pending }}" hint-placeholder-val="{{ true }}">
+                      <div style="display:flex;gap:6px;margin-top:10px">
+                        <button onClick="{{ p.accept }}" style="height:28px;padding:0 13px;border:1px solid var(--sg-accent);background:transparent;color:var(--sg-accent);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9px;letter-spacing:.14em;text-transform:uppercase">Accepter</button>
+                        <button onClick="{{ p.refuse }}" style="height:28px;padding:0 13px;border:1px solid var(--sg-border);background:transparent;color:var(--sg-dim2);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9px;letter-spacing:.14em;text-transform:uppercase">Refuser</button>
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ noProposals }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:11.5px;color:var(--sg-dim2);line-height:1.7">Aucune proposition. Acceptée, une activité devient une carte dans « Hors emploi du temps ».</span>
+                </sc-if>
+              </div>
+              <div style="border:1px dashed var(--sg-border);padding:11px;margin-top:9px;display:flex;flex-direction:column;gap:7px">
+                <div style="display:flex;gap:7px">
+                  <input value="{{ pFrom }}" onChange="{{ onPFrom }}" placeholder="De qui" style="width:120px;height:32px;padding:0 9px;border:1px solid var(--sg-border);font-size:12.5px;background:transparent">
+                  <input value="{{ pTitle }}" onChange="{{ onPTitle }}" placeholder="Activité proposée" style="flex:1;min-width:0;height:32px;padding:0 9px;border:1px solid var(--sg-border);font-size:12.5px;background:transparent">
+                </div>
+                <div style="display:flex;gap:7px">
+                  <input value="{{ pNote }}" onChange="{{ onPNote }}" placeholder="Note (optionnel)" style="flex:1;min-width:0;height:32px;padding:0 9px;border:1px solid var(--sg-border);font-size:12.5px;background:transparent">
+                  <button onClick="{{ addProposal }}" style="padding:0 14px;height:32px;border:1px solid var(--sg-border);background:transparent;color:var(--sg-muted2);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase">Déposer</button>
+                </div>
+                <span style="font-size:10.5px;color:var(--sg-dim2);line-height:1.6">Saisie locale : l'envoi depuis l'appareil d'un membre nécessitera une connexion serveur.</span>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;background:var(--sg-scrim);display:flex;justify-content:flex-end" onClick="{{ closeSel }}">
+        <div onClick="{{ stop }}" style="width:min(480px,96%);background:var(--sg-surface);height:100%;overflow-y:auto;border-left:1px solid var(--sg-line);animation:sgIn .22s ease">
+
+          <div style="{{ selHeadStyle }}">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="{{ selDotStyle }}"></span>
+              <input value="{{ selTitle }}" onChange="{{ onSelTitle }}" style="flex:1;min-width:0;background:transparent;border:none;border-bottom:1px solid var(--sg-line);color:var(--sg-ink);font-family:Inter,sans-serif;font-size:21px;font-weight:300;letter-spacing:-.015em;letter-spacing:.02em;padding:0 0 9px">
+              <button onClick="{{ closeSel }}" style="background:transparent;border:none;color:var(--sg-dim2);width:26px;height:26px;cursor:pointer;line-height:1;font-size:13px" style-hover="color:var(--sg-accent)">✕</button>
+            </div>
+            <div style="display:flex;gap:14px;align-items:center;margin-top:18px;flex-wrap:wrap">
+              <span style="font-family:Inter,sans-serif;font-size:14px;font-weight:300;letter-spacing:.05em;color:var(--sg-muted)">{{ selWhen }}</span>
+              <div style="display:flex;align-items:center;gap:9px;margin-left:auto">
+                <span style="font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sg-dim2);font-family:Inter,sans-serif;font-weight:700">Durée</span>
+                <button onClick="{{ durMinus }}" style="width:22px;height:22px;border:1px solid var(--sg-border);background:transparent;color:var(--sg-muted);cursor:pointer;line-height:1" style-hover="border-color:var(--sg-accent);color:var(--sg-accent)">−</button>
+                <span style="font-family:Inter,sans-serif;font-size:15px;min-width:48px;text-align:center;color:var(--sg-ink)">{{ selDurLabel }}</span>
+                <button onClick="{{ durPlus }}" style="width:22px;height:22px;border:1px solid var(--sg-border);background:transparent;color:var(--sg-muted);cursor:pointer;line-height:1" style-hover="border-color:var(--sg-accent);color:var(--sg-accent)">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:26px 28px 52px;display:flex;flex-direction:column;gap:32px">
+
+            <section>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:10px">Réalisation</div>
+              <div style="display:flex;gap:7px;flex-wrap:wrap">
+                <sc-for list="{{ statusOpts }}" as="s" hint-placeholder-count="3">
+                  <button onClick="{{ s.pick }}" style="{{ s.style }}">{{ s.label }}</button>
+                </sc-for>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap">
+                <span style="font-size:12px;color:var(--sg-muted)">Décalage par rapport au plan</span>
+                <input type="number" step="5" value="{{ selShift }}" onChange="{{ onSelShift }}" style="width:92px;height:32px;padding:0 9px;border:1px solid var(--sg-border);border-radius:0;background:var(--sg-surface);font-size:13px">
+                <span style="font-size:12px;color:var(--sg-muted2)">minutes</span>
+                <span style="{{ shiftHintStyle }}">{{ shiftHint }}</span>
+              </div>
+            </section>
+
+            <section>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:10px">Étiquettes</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px">
+                <sc-for list="{{ tagChips }}" as="t" hint-placeholder-count="0">
+                  <button onClick="{{ t.toggle }}" style="{{ t.style }}">
+                    <span style="{{ t.dotStyle }}"></span>{{ t.name }}
+                  </button>
+                </sc-for>
+                <sc-if value="{{ noTags }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:11.5px;color:var(--sg-dim2)">Aucune étiquette. Créez-en une ci-dessous.</span>
+                </sc-if>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:10px;align-items:center;flex-wrap:wrap">
+                <input value="{{ newTagName }}" onChange="{{ onNewTagName }}" onKeyDown="{{ onNewTagKey }}" placeholder="Nouvelle étiquette…" style="flex:1;min-width:130px;height:32px;padding:0 10px;border:1px solid var(--sg-border);border-radius:0;font-size:12.5px">
+                <div style="display:flex;gap:4px">
+                  <sc-for list="{{ tagSwatches }}" as="s" hint-placeholder-count="6">
+                    <button onClick="{{ s.pick }}" style="{{ s.style }}"></button>
+                  </sc-for>
+                </div>
+                <button onClick="{{ addTag }}" style="width:32px;height:32px;border:1px solid var(--sg-accent);background:var(--sg-surface);color:var(--sg-accent);border-radius:0;cursor:pointer;line-height:1">+</button>
+              </div>
+            </section>
+
+            <section>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);white-space:nowrap">Argent dépensé</div>
+                <span style="font-family:Inter,sans-serif;font-size:17px;font-weight:300;margin-left:auto">{{ selSpentLabel }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column">
+                <sc-for list="{{ selExpenses }}" as="x" hint-placeholder-count="0">
+                  <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--sg-faint);font-size:12.5px">
+                    <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ x.label }}</span>
+                    <span style="color:var(--sg-dim);white-space:nowrap;font-size:11px">{{ x.dom }}</span>
+                    <span style="{{ x.levelStyle }}">{{ x.level }}</span>
+                    <span style="font-family:Inter,sans-serif;font-size:13px;font-weight:300;white-space:nowrap">{{ x.amount }}</span>
+                    <button onClick="{{ x.remove }}" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:12px;line-height:1">✕</button>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ noSelExpenses }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:11.5px;color:var(--sg-dim2);padding:4px 0 8px">Aucune dépense pour cette période.</span>
+                </sc-if>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+                <input value="{{ eLabel }}" onChange="{{ onELabel }}" placeholder="Dans quoi ?" style="flex:1;min-width:120px;height:32px;padding:0 10px;border:1px solid var(--sg-border);font-size:12.5px;background:transparent">
+                <input type="number" value="{{ eAmount }}" onChange="{{ onEAmount }}" placeholder="DH" style="width:84px;height:32px;padding:0 10px;border:1px solid var(--sg-border);font-size:12.5px;background:transparent">
+                <select value="{{ eDomain }}" onChange="{{ onEDomain }}" style="height:32px;padding:0 8px;border:1px solid var(--sg-border);font-size:12px;background:transparent">
+                  <option value="">Domaine…</option>
+                  <sc-for list="{{ domainOpts }}" as="o" hint-placeholder-count="0">
+                    <option value="{{ o.id }}">{{ o.name }}</option>
+                  </sc-for>
+                </select>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+                <sc-for list="{{ levelOpts }}" as="l" hint-placeholder-count="3">
+                  <button onClick="{{ l.pick }}" style="{{ l.style }}">{{ l.label }}</button>
+                </sc-for>
+                <button onClick="{{ addExpense }}" style="margin-left:auto;height:28px;padding:0 14px;border:1px solid var(--sg-accent);background:transparent;color:var(--sg-accent);cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9px;letter-spacing:.14em;text-transform:uppercase">Ajouter</button>
+              </div>
+            </section>
+
+            <section>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:10px">Description</div>
+              <textarea value="{{ selDesc }}" onChange="{{ onSelDesc }}" placeholder="Objectif, contexte, méthode…" style="width:100%;min-height:78px;padding:10px;border:1px solid var(--sg-border);border-radius:0;font-size:13px;line-height:1.6;resize:vertical"></textarea>
+            </section>
+
+            <section>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);white-space:nowrap">Séquence interne</div>
+                <span style="font-size:11px;color:var(--sg-dim2);margin-left:auto">{{ subRangeLabel }}</span>
+              </div>
+              <div style="display:flex;gap:6px;margin-bottom:10px">
+                <input value="{{ newSubTitle }}" onChange="{{ onNewSubTitle }}" onKeyDown="{{ onNewSubKey }}" placeholder="Nouvelle sous-carte…" style="flex:1;min-width:0;height:32px;padding:0 10px;border:1px solid var(--sg-border);border-radius:0;font-size:12.5px">
+                <button onClick="{{ addSub }}" style="width:32px;height:32px;border:1px solid var(--sg-accent);background:var(--sg-surface);color:var(--sg-accent);border-radius:0;cursor:pointer;line-height:1">+</button>
+              </div>
+              <div onDragOver="{{ onDragOverSubPool }}" onDrop="{{ onDropSubPool }}" style="border:1px dashed var(--sg-border);border-radius:0;padding:9px;min-height:46px;display:flex;flex-wrap:wrap;gap:6px;background:var(--sg-sunk)">
+                <sc-for list="{{ subPool }}" as="s" hint-placeholder-count="0">
+                  <div draggable="true" onDragStart="{{ s.onDragStart }}" onDragEnd="{{ onDragEnd }}" style="background:var(--sg-surface);border:1px solid var(--sg-border);border-left:3px solid var(--sg-accent);border-radius:0;padding:6px 9px;font-size:12px;cursor:grab;display:flex;gap:8px;align-items:center">
+                    <span>{{ s.title }}</span>
+                    <button onClick="{{ s.remove }}" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:12px;line-height:1;padding:0">✕</button>
+                  </div>
+                </sc-for>
+                <sc-if value="{{ subPoolEmpty }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:11.5px;color:var(--sg-dim2);padding:6px 4px">Les sous-cartes en attente apparaissent ici — glissez-les dans la durée ci-dessous.</span>
+                </sc-if>
+              </div>
+
+              <div style="display:flex;margin-top:12px;border:1px solid var(--sg-line);border-radius:0;overflow:hidden;background:var(--sg-surface)">
+                <div style="flex:0 0 54px;border-right:1px solid var(--sg-line2);background:var(--sg-sunk)">
+                  <sc-for list="{{ subSlots }}" as="t" hint-placeholder-count="4">
+                    <div style="{{ t.labelStyle }}">{{ t.label }}</div>
+                  </sc-for>
+                </div>
+                <div onDragOver="{{ onDragOverSubGrid }}" onDrop="{{ onDropSubGrid }}" style="{{ subGridStyle }}">
+                  <sc-for list="{{ subSlots }}" as="t" hint-placeholder-count="4">
+                    <div style="{{ t.rowStyle }}"></div>
+                  </sc-for>
+                  <sc-for list="{{ subPlaced }}" as="s" hint-placeholder-count="0">
+                    <div draggable="true" onDragStart="{{ s.onDragStart }}" onDragEnd="{{ onDragEnd }}" style="{{ s.style }}">
+                      <input type="checkbox" checked="{{ s.done }}" onChange="{{ s.toggle }}" style="accent-color:var(--sg-accent);margin:0;cursor:pointer">
+                      <span style="{{ s.titleStyle }}">{{ s.title }}</span>
+                      <span style="font-family:Inter,sans-serif;font-size:9.5px;color:var(--sg-dim);margin-left:auto;white-space:nowrap">{{ s.timeLabel }}</span>
+                      <button onClick="{{ s.remove }}" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:11px;padding:0;line-height:1">✕</button>
+                      <div onMouseDown="{{ s.onResize }}" style="position:absolute;left:0;right:0;bottom:-2px;height:7px;cursor:ns-resize"></div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:10px">Membres</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ selMembers }}" as="m" hint-placeholder-count="0">
+                  <div style="display:flex;gap:10px;align-items:flex-start;border:1px solid var(--sg-line);border-radius:0;padding:9px 10px">
+                    <sc-if value="{{ m.hasPhoto }}" hint-placeholder-val="{{ false }}">
+                      <div style="{{ m.photoStyle }}"></div>
+                    </sc-if>
+                    <sc-if value="{{ m.noPhoto }}" hint-placeholder-val="{{ true }}">
+                      <span style="width:36px;height:36px;border-radius:50%;flex:0 0 auto;background:var(--sg-faint);color:var(--sg-accent);display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-weight:700;font-size:12px;color:var(--sg-accent)">{{ m.initials }}</span>
+                    </sc-if>
+                    <div style="flex:1;min-width:0">
+                      <div style="font-family:Inter,sans-serif;font-weight:700;font-size:13px">{{ m.name }}</div>
+                      <div style="font-size:11.5px;color:var(--sg-muted2);line-height:1.5;margin-top:2px">{{ m.desc }}</div>
+                    </div>
+                    <button onClick="{{ m.remove }}" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:12px;line-height:1">✕</button>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="border:1px dashed var(--sg-border);border-radius:0;padding:11px;margin-top:9px;display:flex;flex-direction:column;gap:7px;background:var(--sg-sunk)">
+                <div style="display:flex;gap:7px;align-items:center">
+                  <label style="width:38px;height:38px;border-radius:50%;border:1px dashed var(--sg-border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;overflow:hidden;background:var(--sg-surface)">
+                    <sc-if value="{{ newMemberHasPhoto }}" hint-placeholder-val="{{ false }}">
+                      <div style="{{ newMemberPhotoStyle }}"></div>
+                    </sc-if>
+                    <sc-if value="{{ newMemberNoPhoto }}" hint-placeholder-val="{{ true }}">
+                      <span style="font-size:15px;color:var(--sg-dim2);line-height:1">＋</span>
+                    </sc-if>
+                    <input type="file" accept="image/*" onChange="{{ onMemberPhoto }}" style="display:none">
+                  </label>
+                  <input value="{{ newMemberName }}" onChange="{{ onMemberName }}" placeholder="Nom du membre" style="flex:1;min-width:0;height:32px;padding:0 9px;border:1px solid var(--sg-border);border-radius:0;font-size:12.5px;background:var(--sg-surface)">
+                </div>
+                <div style="display:flex;gap:7px">
+                  <input value="{{ newMemberDesc }}" onChange="{{ onMemberDesc }}" placeholder="Rôle / description (optionnel)" style="flex:1;min-width:0;height:32px;padding:0 9px;border:1px solid var(--sg-border);border-radius:0;font-size:12.5px;background:var(--sg-surface)">
+                  <button onClick="{{ addMember }}" style="padding:0 14px;height:32px;border:1px solid var(--sg-accent);background:var(--sg-surface);color:var(--sg-accent);border-radius:0;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase" style-hover="background:var(--sg-accent);color:var(--sg-surface)">Ajouter</button>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+                <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2)">Check-list</div>
+                <span style="font-size:11px;color:var(--sg-dim2);margin-left:auto">{{ checkLabel }}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <sc-for list="{{ selCheck }}" as="i" hint-placeholder-count="0">
+                  <label style="display:flex;gap:9px;align-items:center;padding:7px 9px;border:1px solid var(--sg-line);border-radius:0;cursor:pointer" style-hover="border-color:var(--sg-accent2)">
+                    <input type="checkbox" checked="{{ i.done }}" onChange="{{ i.toggle }}" style="accent-color:var(--sg-accent);cursor:pointer;margin:0">
+                    <span style="{{ i.style }}">{{ i.txt }}</span>
+                    <button onClick="{{ i.remove }}" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:12px;margin-left:auto;line-height:1">✕</button>
+                  </label>
+                </sc-for>
+              </div>
+              <div style="display:flex;gap:6px;margin-top:8px">
+                <input value="{{ newCheck }}" onChange="{{ onNewCheck }}" onKeyDown="{{ onNewCheckKey }}" placeholder="Ajouter un élément…" style="flex:1;min-width:0;height:32px;padding:0 10px;border:1px solid var(--sg-border);border-radius:0;font-size:12.5px">
+                <button onClick="{{ addCheck }}" style="width:32px;height:32px;border:1px solid var(--sg-accent);background:var(--sg-surface);color:var(--sg-accent);border-radius:0;cursor:pointer;line-height:1">+</button>
+              </div>
+            </section>
+
+            <section>
+              <div style="font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sg-muted2);margin-bottom:10px">Documents</div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <sc-for list="{{ selDocs }}" as="d" hint-placeholder-count="0">
+                  <div style="display:flex;gap:9px;align-items:center;border:1px solid var(--sg-line);border-radius:0;padding:8px 10px;font-size:12.5px">
+                    <span style="width:22px;height:26px;border:1px solid var(--sg-accent);border-radius:0;flex:0 0 auto;display:block"></span>
+                    <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ d.name }}</span>
+                    <span style="font-size:10.5px;color:var(--sg-dim2);font-family:Inter,sans-serif">{{ d.size }}</span>
+                    <button onClick="{{ d.remove }}" style="border:none;background:transparent;color:var(--sg-faintest);cursor:pointer;font-size:12px;line-height:1">✕</button>
+                  </div>
+                </sc-for>
+              </div>
+              <label style="display:block;margin-top:8px;border:1px dashed var(--sg-border);border-radius:0;padding:13px;text-align:center;font-size:12px;color:var(--sg-muted2);cursor:pointer;background:var(--sg-sunk)" style-hover="border-color:var(--sg-accent2);color:var(--sg-accent)">
+                Joindre un document
+                <input type="file" multiple onChange="{{ onDocs }}" style="display:none">
+              </label>
+            </section>
+
+            <div style="display:flex;gap:8px;border-top:1px solid var(--sg-faint);padding-top:16px">
+              <button onClick="{{ sendToBacklog }}" style="flex:1;height:36px;border:1px solid var(--sg-border);background:var(--sg-surface);color:var(--sg-muted);border-radius:0;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase" style-hover="border-color:var(--sg-accent);color:var(--sg-accent)">Sortir du planning</button>
+              <button onClick="{{ deleteCard }}" style="flex:0 0 auto;padding:0 16px;height:36px;border:1px solid var(--sg-border);background:var(--sg-surface);color:var(--sg-ink);border-radius:0;cursor:pointer;font-family:Inter,sans-serif;font-weight:700;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase" style-hover="background:var(--sg-ink);color:var(--sg-surface);border-color:var(--sg-ink)">Supprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:820}}">
+const H = 54;          // px per hour, main grid
+const SH = 40;         // px per 30 min, sub grid
+const PALETTE = [
+  { name: 'Nuit', v: '#02181E' },
+  { name: 'Marine', v: '#023047' },
+  { name: 'Sarcelle', v: '#0080A7' },
+  { name: 'Cyan', v: '#00A8E8' }
+];
+const KEY = 'sgos.v1';
+
+function uid() { return Math.random().toString(36).slice(2, 9); }
+function iso(d) {
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function parseISO(s) { const p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+function fmt(h) {
+  const t = Math.round(h * 60);
+  return String(Math.floor(t / 60) % 24).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0');
+}
+function durLabel(d) {
+  const hh = Math.floor(d), mm = Math.round((d - hh) * 60);
+  if (hh && mm) return hh + ' h ' + mm;
+  if (hh) return hh + ' h';
+  return mm + ' min';
+}
+function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: iso(new Date()),
+      view: 'jour',
+      backlog: [],
+      days: {},
+      selId: null,
+      newTitle: '',
+      newColor: '#0080A7',
+      newCheck: '',
+      newSubTitle: '',
+      mName: '', mDesc: '', mPhoto: '',
+      tags: [], newTagName: '', newTagColor: '#0080A7', period: 'jour',
+      now: new Date(),
+      theme: 'light',
+      income: 0, incomePeriod: 'mois', domains: [],
+      dName: '', dColor: '#0080A7', dPrio: 2,
+      eLabel: '', eAmount: '', eLevel: 'importante', eDomain: '',
+      team: { name: '', field: 'Emploi du temps du jour', note: '', members: [], proposals: [] },
+      tName: '', tRole: '', tPhoto: '',
+      pFrom: '', pTitle: '', pNote: '',
+      teamOpen: false, tokenAmount: '',
+      bg: 'none', bgImg: '', bgOpen: false
+    };
+    this.drag = null;
+  }
+
+  componentDidMount() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) {
+        const s = JSON.parse(raw);
+        this.setState({ backlog: s.backlog || [], days: s.days || {}, tags: s.tags || [],
+          income: s.income || 0, incomePeriod: s.incomePeriod || 'mois', domains: s.domains || [],
+          bg: s.bg || 'none', bgImg: s.bgImg || '',
+          team: Object.assign({ name: '', field: 'Emploi du temps du jour', note: '', members: [], proposals: [] }, s.team || {}) });
+      }
+    } catch (e) { /* ignore */ }
+    try {
+      const t = localStorage.getItem('sgos.theme') === 'dark' ? 'dark' : 'light';
+      this.setState({ theme: t });
+      document.documentElement.setAttribute('data-sgos', t);
+    } catch (e) { /* ignore */ }
+    setTimeout(() => {
+      const el = this.mainEl;
+      if (el) el.scrollTop = Math.max(0, (new Date().getHours() - 1) * H);
+    }, 120);
+    this.timer = setInterval(() => this.setState({ now: new Date() }), 60000);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+
+  persist() {
+    try { localStorage.setItem(KEY, JSON.stringify({ backlog: this.state.backlog, days: this.state.days, tags: this.state.tags,
+      income: this.state.income, incomePeriod: this.state.incomePeriod, domains: this.state.domains, team: this.state.team,
+      bg: this.state.bg, bgImg: this.state.bgImg })); } catch (e) {}
+  }
+  setS(patch) { this.setState(patch, () => this.persist()); }
+
+  cards() { return (this.state.days[this.state.date] || {}).cards || []; }
+  setCards(cards) {
+    const days = Object.assign({}, this.state.days);
+    days[this.state.date] = { cards };
+    this.setS({ days });
+  }
+  updCard(id, fn) {
+    this.setCards(this.cards().map(c => (c.id === id ? fn(Object.assign({}, c)) : c)));
+  }
+  sel() { return this.cards().find(c => c.id === this.state.selId) || this.state.backlog.find(c => c.id === this.state.selId) || null; }
+  updSel(fn) {
+    const id = this.state.selId;
+    if (this.cards().some(c => c.id === id)) return this.updCard(id, fn);
+    this.setS({ backlog: this.state.backlog.map(c => (c.id === id ? fn(Object.assign({}, c)) : c)) });
+  }
+
+  blank(title, color) {
+    return { id: uid(), title: title, color: color, start: null, dur: 1, status: 'plan', shift: 0,
+      desc: '', members: [], check: [], docs: [], subs: [], tags: [] };
+  }
+
+  tagStatsFor(cards) {
+    const placed = cards.filter(c => c.start !== null && c.start !== undefined);
+    const map = {};
+    let total = 0;
+    placed.forEach(c => {
+      const ts = (c.tags || []).filter(id => this.state.tags.some(t => t.id === id));
+      total += c.dur;
+      const add = (k, v, done) => {
+        if (!map[k]) map[k] = { h: 0, done: 0 };
+        map[k].h += v; if (done) map[k].done += v;
+      };
+      const isDone = c.status === 'done';
+      if (!ts.length) { add('__none', c.dur, isDone); return; }
+      const share = c.dur / ts.length;
+      ts.forEach(id => add(id, share, isDone));
+    });
+    if (!total) return [];
+    const out = this.state.tags.filter(t => map[t.id]).map(t => ({ id: t.id, name: t.name, color: t.color, h: map[t.id].h, doneH: map[t.id].done }));
+    out.sort((a, b) => b.h - a.h);
+    if (map.__none) out.push({ id: '__none', name: 'Sans étiquette', color: 'var(--sg-notag)', h: map.__none.h, doneH: map.__none.done });
+    out.forEach(o => { o.pct = Math.round((o.h / total) * 100); o.rate = o.h ? Math.round((o.doneH / o.h) * 100) : 0; });
+    return out;
+  }
+
+  keysFor(p) { return p === 'jour' ? [this.state.date] : (p === 'semaine' ? this.weekKeys() : this.monthKeys()); }
+  moneyCards() {
+    const out = [];
+    this.keysFor(this.state.incomePeriod).forEach(k => {
+      (((this.state.days[k] || {}).cards) || []).forEach(c => out.push({ k: k, c: c }));
+    });
+    return out;
+  }
+  setDomains(domains) { this.setS({ domains: domains }); }
+  setTeam(patch) { this.setS({ team: Object.assign({}, this.state.team, patch) }); }
+
+  // ---------- day/week/month scoring ----------
+  scoreOf(cards) {
+    const placed = cards.filter(c => c.start !== null && c.start !== undefined);
+    if (!placed.length) return null;
+    let wsum = 0, ssum = 0, done = 0, ab = 0, shifts = [];
+    placed.forEach(c => {
+      const w = c.dur || 1;
+      let v = 0;
+      if (c.status === 'done') {
+        const pen = clamp(Math.abs(c.shift || 0) / 60 / (c.dur || 1), 0, 1) * 0.45;
+        v = 1 - pen;
+        done++;
+        if (c.shift) shifts.push(Math.abs(c.shift));
+      } else if (c.status === 'abandon') { v = 0; ab++; }
+      wsum += w; ssum += w * v;
+    });
+    const avgShift = shifts.length ? Math.round(shifts.reduce((a, b) => a + b, 0) / shifts.length) : 0;
+    return { note: Math.round((ssum / wsum) * 100), total: placed.length, done: done, ab: ab,
+      pending: placed.length - done - ab, hours: wsum, avgShift: avgShift };
+  }
+  scoreRange(list) {
+    const all = [];
+    list.forEach(k => { const d = this.state.days[k]; if (d && d.cards) all.push.apply(all, d.cards); });
+    return this.scoreOf(all);
+  }
+  weekKeys() {
+    const d = parseISO(this.state.date);
+    const off = (d.getDay() + 6) % 7;
+    const mon = new Date(d); mon.setDate(d.getDate() - off);
+    const out = [];
+    for (let i = 0; i < 7; i++) { const x = new Date(mon); x.setDate(mon.getDate() + i); out.push(iso(x)); }
+    return out;
+  }
+  monthKeys() {
+    const p = this.state.date.slice(0, 7);
+    return Object.keys(this.state.days).filter(k => k.indexOf(p) === 0);
+  }
+
+  // ---------- drag & drop ----------
+  hourFromEvent(e, el) {
+    const r = el.getBoundingClientRect();
+    const y = e.clientY - r.top - (this.grabY || 0);
+    return clamp(Math.round((y / H) * 4) / 4, 0, 24);
+  }
+  onDropGrid = (e) => {
+    e.preventDefault();
+    const d = this.drag; if (!d) return;
+    const start = this.hourFromEvent(e, e.currentTarget);
+    if (d.type === 'backlog') {
+      const card = this.state.backlog.find(c => c.id === d.id); if (!card) return;
+      const nc = JSON.parse(JSON.stringify(card));
+      nc.start = clamp(start, 0, 24 - card.dur);
+      const days = Object.assign({}, this.state.days);
+      if (card.keep) { nc.id = uid(); nc.keep = false; }
+      days[this.state.date] = { cards: this.cards().concat([nc]) };
+      this.setS({ backlog: card.keep ? this.state.backlog : this.state.backlog.filter(c => c.id !== d.id), days: days });
+    } else if (d.type === 'placed') {
+      this.updCard(d.id, c => { c.start = clamp(start, 0, 24 - c.dur); return c; });
+    }
+    this.drag = null;
+  };
+  onDropBacklog = (e) => {
+    e.preventDefault();
+    const d = this.drag; if (!d || d.type !== 'placed') return;
+    const card = this.cards().find(c => c.id === d.id); if (!card) return;
+    const days = Object.assign({}, this.state.days);
+    days[this.state.date] = { cards: this.cards().filter(c => c.id !== d.id) };
+    this.setS({ days: days, backlog: this.state.backlog.concat([Object.assign({}, card, { start: null })]) });
+    this.drag = null;
+  };
+  onDropSubGrid = (e) => {
+    e.preventDefault();
+    const d = this.drag; if (!d || d.type !== 'sub') return;
+    const s = this.sel(); if (!s) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const y = e.clientY - r.top - (this.grabY || 0);
+    const off = clamp(Math.round((y / SH) * 2) / 2, 0, s.dur * 2) / 2;
+    this.updSel(c => {
+      c.subs = c.subs.map(x => (x.id === d.id ? Object.assign({}, x, { off: clamp(off, 0, c.dur - (x.dur || 0.5)) }) : x));
+      return c;
+    });
+    this.drag = null;
+  };
+  onDropSubPool = (e) => {
+    e.preventDefault();
+    const d = this.drag; if (!d || d.type !== 'sub') return;
+    this.updSel(c => { c.subs = c.subs.map(x => (x.id === d.id ? Object.assign({}, x, { off: null }) : x)); return c; });
+    this.drag = null;
+  };
+  allow = (e) => { if (this.drag) e.preventDefault(); };
+
+  // ---------- resize ----------
+  startResize(kind, id, e) {
+    e.preventDefault(); e.stopPropagation();
+    const unit = kind === 'card' ? H : SH * 2;
+    const topClient = e.currentTarget.parentNode.getBoundingClientRect().top;
+    const move = (ev) => {
+      const raw = (ev.clientY - topClient) / unit;
+      const dur = clamp(Math.round(raw * 4) / 4, 0.25, 24);
+      if (kind === 'card') this.updCard(id, c => { c.dur = Math.min(dur, 24 - c.start); return c; });
+      else this.updSel(c => {
+        c.subs = c.subs.map(x => (x.id === id ? Object.assign({}, x, { dur: Math.min(dur, c.dur - (x.off || 0)) }) : x));
+        return c;
+      });
+    };
+    const up = () => { document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); };
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', up);
+  }
+
+  photoToData(file, cb) {
+    const fr = new FileReader();
+    fr.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const s = 96, cv = document.createElement('canvas');
+        cv.width = s; cv.height = s;
+        const k = Math.min(img.width, img.height);
+        cv.getContext('2d').drawImage(img, (img.width - k) / 2, (img.height - k) / 2, k, k, 0, 0, s, s);
+        cb(cv.toDataURL('image/jpeg', 0.8));
+      };
+      img.src = fr.result;
+    };
+    fr.readAsDataURL(file);
+  }
+
+  lanes(cards) {
+    const sorted = cards.slice().sort((a, b) => a.start - b.start || b.dur - a.dur);
+    const groups = [];
+    sorted.forEach(c => {
+      let g = groups.find(gr => gr.end > c.start + 0.001);
+      if (!g) { g = { items: [], end: 0 }; groups.push(g); }
+      g.items.push(c); g.end = Math.max(g.end, c.start + c.dur);
+    });
+    const map = {};
+    groups.forEach(g => {
+      const ends = [];
+      g.items.forEach(c => {
+        let l = ends.findIndex(e => e <= c.start + 0.001);
+        if (l === -1) { l = ends.length; ends.push(0); }
+        ends[l] = c.start + c.dur;
+        map[c.id] = { lane: l };
+      });
+      g.items.forEach(c => { map[c.id].of = ends.length; });
+    });
+    return map;
+  }
+
+  renderVals() {
+    const st = this.state;
+    const self = this;
+    const dateD = parseISO(st.date);
+    const dateLabel = dateD.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+
+    const tab = (on) => 'padding:5px 0;border:none;background:transparent;cursor:pointer;white-space:nowrap;align-self:center;' +
+      'font-family:Inter,sans-serif;font-weight:700;font-size:10px;letter-spacing:.17em;text-transform:uppercase;' +
+      'border-bottom:2px solid ' + (on ? 'var(--sg-accent2)' : 'transparent') + ';color:' + (on ? 'var(--sg-ink)' : 'var(--sg-dim2)');
+
+    const hours = [];
+    for (let i = 0; i < 24; i++) {
+      hours.push({
+        key: i, label: String(i).padStart(2, '0') + ':00',
+        labelStyle: { height: H + 'px', display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end',
+          paddingRight: '9px', paddingTop: '3px', fontFamily: 'Inter,sans-serif', fontSize: '10.5px',
+          letterSpacing: '.08em', color: i % 6 === 0 ? 'var(--sg-ink)' : 'var(--sg-dim2)',
+          borderTop: i === 0 ? 'none' : '1px solid var(--sg-faint)', boxSizing: 'border-box' },
+        rowStyle: { height: H + 'px', borderTop: i === 0 ? 'none' : (i % 6 === 0 ? '1px solid var(--sg-line)' : '1px solid var(--sg-faint)'), boxSizing: 'border-box', position: 'relative', zIndex: 1 }
+      });
+    }
+
+    const cards = this.cards();
+    const laneMap = this.lanes(cards);
+    const statusColor = { plan: 'var(--sg-dim2)', done: 'var(--sg-accent)', abandon: 'var(--sg-ink)' };
+    const statusText = { plan: 'Planifié', done: 'Réalisé', abandon: 'Abandonné' };
+
+    const mkMeta = (c) => {
+      const bits = [];
+      (c.tags || []).forEach(id => { const t = st.tags.find(x => x.id === id); if (t) bits.push(t.name); });
+      if (c.members && c.members.length) bits.push(c.members.length + ' membre' + (c.members.length > 1 ? 's' : ''));
+      if (c.check && c.check.length) bits.push(c.check.filter(i => i.done).length + '/' + c.check.length + ' coché');
+      if (c.subs && c.subs.length) bits.push(c.subs.length + ' sous-carte' + (c.subs.length > 1 ? 's' : ''));
+      if (c.docs && c.docs.length) bits.push(c.docs.length + ' doc');
+      return bits.join(' · ');
+    };
+
+    const placed = cards.map(c => {
+      const lm = laneMap[c.id] || { lane: 0, of: 1 };
+      const w = 100 / lm.of;
+      const h = c.dur * H - 4;
+      return {
+        key: c.id, title: c.title, timeLabel: fmt(c.start) + '–' + fmt(c.start + c.dur),
+        metaLabel: mkMeta(c) || durLabel(c.dur),
+        statusLabel: statusText[c.status] + (c.shift ? ' · ' + (c.shift > 0 ? '+' : '') + c.shift + ' min' : ''),
+        statusChipStyle: { fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '9px', letterSpacing: '.14em',
+          textTransform: 'uppercase', color: statusColor[c.status], marginLeft: 'auto' },
+        showBody: c.dur >= 0.75,
+        hasSubs: !!(c.subs && c.subs.length),
+        subBars: (c.subs || []).map(s => ({ key: s.id, style: { flex: 1, background: s.done ? 'var(--sg-accent2)' : 'var(--sg-line)', borderRadius: '0' } })),
+        dotStyle: { width: '7px', height: '7px', borderRadius: '50%', background: c.color, flex: '0 0 auto',
+          opacity: c.status === 'abandon' ? 0.4 : 1 },
+        titleStyle: { fontFamily: 'Inter,sans-serif', fontSize: '13px',
+          whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0,
+          textDecoration: c.status === 'abandon' ? 'line-through' : 'none',
+          color: c.status === 'abandon' ? 'var(--sg-dim)' : 'var(--sg-ink)' },
+        style: { position: 'absolute', top: (c.start * H + 2) + 'px', height: h + 'px',
+          left: 'calc(' + (lm.lane * w) + '% + 4px)', width: 'calc(' + w + '% - 8px)',
+          background: c.status === 'done' ? 'var(--sg-wash)' : 'var(--sg-surface)',
+          border: '1px solid ' + (c.status === 'done' ? 'var(--sg-accentline)' : 'var(--sg-line)'),
+          borderLeft: '2px solid ' + c.color, borderRadius: '0', padding: '6px 9px',
+          overflow: 'hidden', cursor: 'grab', boxShadow: 'none' },
+        onOpen: () => self.setState({ selId: c.id }),
+        onDragStart: (e) => {
+          self.drag = { type: 'placed', id: c.id };
+          self.grabY = e.clientY - e.currentTarget.getBoundingClientRect().top;
+          try { e.dataTransfer.setData('text/plain', c.id); e.dataTransfer.effectAllowed = 'move'; } catch (x) {}
+        },
+        onResize: (e) => self.startResize('card', c.id, e)
+      };
+    });
+
+    const backlog = st.backlog.map(c => ({
+      key: c.id, title: c.title, durLabel: durLabel(c.dur),
+      metaLabel: mkMeta(c), hasMeta: !!mkMeta(c),
+      keepLabel: c.keep ? '◆ Toujours ici' : '◇ Toujours ici',
+      keepTitle: c.keep ? 'La carte reste hors emploi du temps quand on la glisse' : 'Garder cette carte hors emploi du temps',
+      keepStyle: { border: '1px solid ' + (c.keep ? 'var(--sg-accent)' : 'var(--sg-line)'), background: c.keep ? 'var(--sg-wash)' : 'transparent',
+        color: c.keep ? 'var(--sg-accent)' : 'var(--sg-dim2)', borderRadius: '0', padding: '2px 7px', cursor: 'pointer',
+        fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '8.5px', letterSpacing: '.14em', textTransform: 'uppercase', lineHeight: 1.7 },
+      toggleKeep: (e) => { e.stopPropagation(); self.setS({ backlog: self.state.backlog.map(x => (x.id === c.id ? Object.assign({}, x, { keep: !x.keep }) : x)) }); },
+      chipStyle: { background: 'var(--sg-surface)', border: '1px solid var(--sg-line)', borderLeft: '2px solid ' + c.color,
+        borderRadius: '0', padding: '12px 13px', cursor: 'grab', boxShadow: 'none' },
+      onOpen: () => self.setState({ selId: c.id }),
+      onDragStart: (e) => {
+        self.drag = { type: 'backlog', id: c.id }; self.grabY = 0;
+        try { e.dataTransfer.setData('text/plain', c.id); e.dataTransfer.effectAllowed = 'move'; } catch (x) {}
+      }
+    }));
+
+    const nowD = st.now;
+    const nowH = nowD.getHours() + nowD.getMinutes() / 60;
+
+    // ----- selection -----
+    const s = this.sel();
+    const subPool = [], subPlaced = [], subSlots = [];
+    let selMembers = [], selCheck = [], selDocs = [];
+    if (s) {
+      (s.subs || []).forEach(x => {
+        const common = {
+          key: x.id, title: x.title, done: !!x.done,
+          onDragStart: (e) => {
+            self.drag = { type: 'sub', id: x.id };
+            self.grabY = x.off === null || x.off === undefined ? 0 : e.clientY - e.currentTarget.getBoundingClientRect().top;
+            try { e.dataTransfer.setData('text/plain', x.id); } catch (er) {}
+          },
+          remove: (e) => { e.stopPropagation(); self.updSel(c => { c.subs = c.subs.filter(y => y.id !== x.id); return c; }); },
+          toggle: () => self.updSel(c => { c.subs = c.subs.map(y => (y.id === x.id ? Object.assign({}, y, { done: !y.done }) : y)); return c; })
+        };
+        if (x.off === null || x.off === undefined) subPool.push(common);
+        else subPlaced.push(Object.assign({}, common, {
+          timeLabel: fmt((s.start === null || s.start === undefined ? 0 : s.start) + x.off),
+          titleStyle: { fontSize: '11.5px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+            minWidth: 0, textDecoration: x.done ? 'line-through' : 'none', color: x.done ? 'var(--sg-dim)' : 'var(--sg-ink)' },
+          style: { position: 'absolute', top: (x.off * SH * 2 + 2) + 'px', height: ((x.dur || 0.5) * SH * 2 - 4) + 'px',
+            left: '5px', right: '5px', background: x.done ? 'var(--sg-wash)' : 'var(--sg-surface)',
+            border: '1px solid ' + (x.done ? 'var(--sg-accentline)' : 'var(--sg-line)'), borderLeft: '3px solid ' + s.color,
+            borderRadius: '0', padding: '0 7px', display: 'flex', alignItems: 'center', gap: '7px',
+            cursor: 'grab', overflow: 'hidden' },
+          onResize: (e) => self.startResize('sub', x.id, e)
+        }));
+      });
+      const base = s.start === null || s.start === undefined ? 0 : s.start;
+      const n = Math.max(1, Math.round(s.dur * 2));
+      for (let i = 0; i < n; i++) {
+        subSlots.push({
+          key: i, label: fmt(base + i * 0.5),
+          labelStyle: { height: SH + 'px', display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end',
+            paddingRight: '7px', paddingTop: '2px', fontFamily: 'Inter,sans-serif', fontSize: '9.5px',
+            color: i % 2 === 0 ? 'var(--sg-muted)' : '#AFC0C8', borderTop: i === 0 ? 'none' : '1px solid var(--sg-faint)', boxSizing: 'border-box' },
+          rowStyle: { height: SH + 'px', borderTop: i === 0 ? 'none' : (i % 2 === 0 ? '1px solid var(--sg-line2)' : '1px dashed var(--sg-faint)'), boxSizing: 'border-box' }
+        });
+      }
+      selMembers = (s.members || []).map(m => ({
+        key: m.id, name: m.name, desc: m.desc, photo: m.photo, hasPhoto: !!m.photo, noPhoto: !m.photo,
+        initials: (m.name || '?').trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase(),
+        photoStyle: { width: '36px', height: '36px', borderRadius: '50%', flex: '0 0 auto',
+          border: '1px solid var(--sg-line)', backgroundImage: 'url(' + (m.photo || '') + ')',
+          backgroundSize: 'cover', backgroundPosition: 'center' },
+        remove: () => self.updSel(c => { c.members = c.members.filter(y => y.id !== m.id); return c; })
+      }));
+      selCheck = (s.check || []).map(i => ({
+        key: i.id, txt: i.txt, done: !!i.done,
+        style: { fontSize: '12.5px', textDecoration: i.done ? 'line-through' : 'none', color: i.done ? 'var(--sg-dim2)' : 'var(--sg-ink)' },
+        toggle: () => self.updSel(c => { c.check = c.check.map(y => (y.id === i.id ? Object.assign({}, y, { done: !y.done }) : y)); return c; }),
+        remove: (e) => { e.preventDefault(); e.stopPropagation(); self.updSel(c => { c.check = c.check.filter(y => y.id !== i.id); return c; }); }
+      }));
+      selDocs = (s.docs || []).map(d => ({
+        key: d.id, name: d.name, size: d.size,
+        remove: () => self.updSel(c => { c.docs = c.docs.filter(y => y.id !== d.id); return c; })
+      }));
+    }
+
+    const statusOpts = ['plan', 'done', 'abandon'].map(k => ({
+      key: k, label: statusText[k],
+      style: { padding: '0 14px', height: '32px', borderRadius: '0', cursor: 'pointer',
+        fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '9.5px', letterSpacing: '.16em', textTransform: 'uppercase',
+        border: '1px solid ' + (s && s.status === k ? statusColor[k] : 'var(--sg-border)'),
+        background: 'transparent',
+        color: s && s.status === k ? statusColor[k] : 'var(--sg-muted2)' },
+      pick: () => self.updSel(c => { c.status = k; return c; })
+    }));
+
+    const TAGCOLORS = ['#02181E', '#023047', '#0080A7', '#00A8E8', '#5A646B', '#9AA3A9'];
+    const tagChips = st.tags.map(t => {
+      const on = !!(s && (s.tags || []).indexOf(t.id) >= 0);
+      return {
+        key: t.id, name: t.name,
+        dotStyle: { width: '7px', height: '7px', borderRadius: '50%', background: t.color, display: 'inline-block', marginRight: '7px' },
+        style: { display: 'inline-flex', alignItems: 'center', padding: '5px 11px', borderRadius: '0', cursor: 'pointer',
+          fontFamily: 'Inter,sans-serif', fontSize: '12px', letterSpacing: '.02em',
+          border: '1px solid ' + (on ? t.color : 'var(--sg-line)'), background: on ? 'var(--sg-wash)' : 'var(--sg-surface)',
+          color: on ? 'var(--sg-ink)' : 'var(--sg-dim)' },
+        toggle: () => self.updSel(c => {
+          const cur = c.tags || [];
+          c.tags = cur.indexOf(t.id) >= 0 ? cur.filter(x => x !== t.id) : cur.concat([t.id]);
+          return c;
+        })
+      };
+    });
+    const tagSwatches = TAGCOLORS.map(v => ({
+      key: v,
+      style: { width: '16px', height: '16px', borderRadius: '50%', background: v, cursor: 'pointer', padding: 0,
+        border: st.newTagColor === v ? '2px solid var(--sg-accent2)' : '1px solid var(--sg-line)' },
+      pick: () => self.setState({ newTagColor: v })
+    }));
+
+    const periodKeys = st.period === 'jour' ? [st.date] : (st.period === 'semaine' ? this.weekKeys() : this.monthKeys());
+    const periodEntries = [];
+    periodKeys.forEach(k => {
+      (((this.state.days[k] || {}).cards) || []).forEach(c => periodEntries.push({ k: k, c: c }));
+    });
+    const periodCards = periodEntries.map(e => e.c);
+    const rawTagStats = this.tagStatsFor(periodCards);
+    const topTag = rawTagStats.filter(t => t.id !== '__none').slice().sort((a, b) => b.rate - a.rate || b.h - a.h)[0];
+    const tagStats = rawTagStats.map(t => ({
+      key: t.id, name: t.name, pct: t.pct + ' %', hours: durLabel(Math.round(t.h * 4) / 4),
+      rate: t.rate + ' % réalisé',
+      rateStyle: { fontFamily: 'Inter,sans-serif', fontSize: '11px', whiteSpace: 'nowrap',
+        color: t.rate >= 75 ? 'var(--sg-accent)' : t.rate >= 40 ? 'var(--sg-dim)' : 'var(--sg-ink)', minWidth: '84px', textAlign: 'right' },
+      removable: t.id !== '__none',
+      dotStyle: { width: '9px', height: '9px', borderRadius: '50%', background: t.color, flex: '0 0 auto', display: 'block' },
+      segStyle: { width: t.pct + '%', background: t.color, height: '100%' },
+      barStyle: { width: t.pct + '%', height: '100%', background: t.color },
+      remove: () => {
+        const days = {};
+        Object.keys(self.state.days).forEach(k => {
+          days[k] = { cards: (self.state.days[k].cards || []).map(c => Object.assign({}, c, { tags: (c.tags || []).filter(x => x !== t.id) })) };
+        });
+        self.setS({
+          tags: self.state.tags.filter(x => x.id !== t.id),
+          days: days,
+          backlog: self.state.backlog.map(c => Object.assign({}, c, { tags: (c.tags || []).filter(x => x !== t.id) }))
+        });
+      }
+    }));
+    const periodOpts = ['jour', 'semaine', 'mois'].map(p => ({
+      key: p, label: p === 'jour' ? 'Jour' : (p === 'semaine' ? 'Semaine' : 'Mois'),
+      style: { padding: '0 13px', height: '28px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
+        fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '9.5px', letterSpacing: '.16em', textTransform: 'uppercase',
+        background: st.period === p ? '#023047' : 'var(--sg-surface)', color: st.period === p ? 'var(--sg-surface)' : 'var(--sg-dim)' },
+      pick: () => self.setState({ period: p })
+    }));
+
+    const dayNamesShort = ['dim', 'lun', 'mar', 'mer', 'jeu', 'ven', 'sam'];
+    const entryItem = (e) => {
+      const c = e.c;
+      const d = parseISO(e.k);
+      const tagNames = (c.tags || []).map(id => (st.tags.find(t => t.id === id) || {}).name).filter(Boolean);
+      return {
+        key: e.k + c.id, title: c.title,
+        when: (st.period === 'jour' ? '' : dayNamesShort[d.getDay()] + ' ' + d.getDate() + ' · ') + fmt(c.start) + '–' + fmt(c.start + c.dur),
+        tags: tagNames.join(' · ') || '—',
+        dur: durLabel(c.dur),
+        shift: c.shift ? (c.shift > 0 ? '+' + c.shift + ' min de retard' : c.shift + ' min (en avance)') : '',
+        hasShift: !!c.shift,
+        dotStyle: { width: '7px', height: '7px', borderRadius: '50%', background: c.color, flex: '0 0 auto', display: 'block' },
+        open: () => self.setState({ date: e.k, view: 'jour', selId: c.id })
+      };
+    };
+    const byStatus = (k) => periodEntries.filter(e => e.c.start !== null && e.c.start !== undefined && e.c.status === k).map(entryItem);
+    const detailGroups = [
+      { key: 'done', label: 'Réalisé', color: 'var(--sg-accent)', items: byStatus('done') },
+      { key: 'abandon', label: 'Abandonné', color: 'var(--sg-ink)', items: byStatus('abandon') },
+      { key: 'plan', label: 'Sans statut', color: 'var(--sg-dim2)', items: byStatus('plan') }
+    ].map(g => Object.assign(g, {
+      headStyle: { fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '9.5px', letterSpacing: '.18em', textTransform: 'uppercase',
+        color: g.color, borderBottom: '1px solid ' + g.color, paddingBottom: '7px', display: 'flex', justifyContent: 'space-between', gap: '8px' },
+      count: g.items.length,
+      empty: g.items.length === 0
+    }));
+
+    const dayScore = this.scoreOf(cards);
+    const weekScore = this.scoreRange(this.weekKeys());
+    const monthScore = this.scoreRange(this.monthKeys());
+    const mkBilan = (label, sc) => ({
+      key: label, label: label, note: sc ? sc.note : '—',
+      noteStyle: { fontFamily: 'Inter,sans-serif', fontSize: '52px', fontWeight: 200, letterSpacing: '-.03em', lineHeight: 1,
+        color: !sc ? 'var(--sg-faintest)' : sc.note >= 75 ? 'var(--sg-accent)' : sc.note >= 45 ? 'var(--sg-accent2)' : 'var(--sg-ink)' },
+      barStyle: { height: '100%', width: (sc ? sc.note : 0) + '%', background: 'var(--sg-accent)', transition: 'width .4s ease' },
+      stats: [
+        { key: 'a', k: 'Cartes planifiées', v: sc ? sc.total : 0 },
+        { key: 'b', k: 'Réalisées', v: sc ? sc.done : 0 },
+        { key: 'c', k: 'Abandonnées', v: sc ? sc.ab : 0 },
+        { key: 'd', k: 'Sans statut', v: sc ? sc.pending : 0 },
+        { key: 'e', k: 'Décalage moyen', v: sc ? sc.avgShift + ' min' : '—' }
+      ]
+    });
+
+    const dayNames = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+    const weekBars = this.weekKeys().map((k, i) => {
+      const sc = this.scoreOf((this.state.days[k] || {}).cards || []);
+      const isCur = k === st.date;
+      return {
+        key: k, day: dayNames[i], note: sc ? sc.note : '–',
+        barStyle: { width: '100%', maxWidth: '46px', height: Math.max(3, (sc ? sc.note : 0) * 0.68) + 'px',
+          background: isCur ? 'var(--sg-accent2)' : '#023047', borderRadius: '0', transition: 'height .3s ease' },
+        dayStyle: { fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '9px', letterSpacing: '.16em',
+          textTransform: 'uppercase', color: isCur ? 'var(--sg-accent)' : 'var(--sg-dim2)' },
+        go: () => self.setState({ date: k, view: 'jour' })
+      };
+    });
+
+    const sameDayScore = dayScore;
+
+    // ================= ARGENT =================
+    const money = (n) => (Math.round(n || 0)).toLocaleString('fr-FR').replace(/\u202f|\u00a0/g, ' ') + ' DH';
+    const PRIO = { 1: 'Urgent & important', 2: 'Important', 3: 'Urgent', 4: 'Plus tard' };
+    const income = st.income || 0;
+    const allocated = st.domains.reduce((a, d) => a + (d.alloc || 0), 0);
+    const remaining = income - allocated;
+
+    const spentEntries = this.moneyCards();
+    const realByDomain = {}, realByLevel = { importante: 0, secondaire: 0, superflue: 0 };
+    let realTotal = 0;
+    const expenseRows = [];
+    spentEntries.forEach(e => {
+      (e.c.expenses || []).forEach(x => {
+        realTotal += x.amount || 0;
+        realByLevel[x.level] = (realByLevel[x.level] || 0) + (x.amount || 0);
+        if (x.domain) realByDomain[x.domain] = (realByDomain[x.domain] || 0) + (x.amount || 0);
+        expenseRows.push({ k: e.k + x.id, label: x.label, amount: money(x.amount), level: x.level,
+          card: e.c.title, dom: (st.domains.find(d => d.id === x.domain) || {}).name || '—' });
+      });
+    });
+
+    const moneyTokens = [10, 50, 100, 500].map(v => ({
+      key: v, label: money(v),
+      style: { padding: '9px 14px', border: '1px solid var(--sg-border)', background: 'var(--sg-surface)',
+        cursor: 'grab', fontFamily: 'Inter,sans-serif', fontSize: '15px', fontWeight: 300, letterSpacing: '.03em',
+        color: 'var(--sg-ink)', userSelect: 'none' },
+      onDragStart: (e) => { self.drag = { type: 'money', amount: v }; try { e.dataTransfer.setData('text/plain', 'm' + v); } catch (x) {} }
+    }));
+
+    const domains = st.domains.map(d => {
+      const real = realByDomain[d.id] || 0;
+      const pct = income ? Math.round(((d.alloc || 0) / income) * 100) : 0;
+      return {
+        key: d.id, name: d.name, amount: money(d.alloc || 0), pct: pct + ' %',
+        prio: d.prio, prioLabel: PRIO[d.prio],
+        prioStyle: { border: '1px solid ' + (d.prio <= 2 ? 'var(--sg-accent)' : 'var(--sg-border)'),
+          color: d.prio <= 2 ? 'var(--sg-accent)' : 'var(--sg-dim2)', background: 'transparent',
+          padding: '3px 8px', cursor: 'pointer', fontFamily: 'Inter,sans-serif', fontWeight: 700,
+          fontSize: '8.5px', letterSpacing: '.14em', textTransform: 'uppercase', whiteSpace: 'nowrap' },
+        dotStyle: { width: '9px', height: '9px', borderRadius: '50%', background: d.color, flex: '0 0 auto', display: 'block' },
+        style: { border: '1px solid var(--sg-line)', borderTop: '2px solid ' + d.color, padding: '16px 16px 14px',
+          display: 'flex', flexDirection: 'column', gap: '10px', background: 'var(--sg-surface)' },
+        barStyle: { width: Math.min(100, pct) + '%', height: '100%', background: d.color },
+        realLabel: real ? money(real) + ' dépensés' : 'Aucune dépense',
+        realStyle: { fontFamily: 'Inter,sans-serif', fontSize: '11px',
+          color: real > (d.alloc || 0) ? 'var(--sg-ink)' : 'var(--sg-dim)' },
+        realBarStyle: { width: (d.alloc ? Math.min(100, (real / d.alloc) * 100) : 0) + '%', height: '100%',
+          background: real > (d.alloc || 0) ? 'var(--sg-ink)' : 'var(--sg-accent2)' },
+        slider: d.alloc || 0,
+        sliderMax: Math.max(income, d.alloc || 0, 100),
+        onSlide: (e) => { const v = +e.target.value; self.setDomains(st.domains.map(x => (x.id === d.id ? Object.assign({}, x, { alloc: v }) : x))); },
+        cyclePrio: () => self.setDomains(st.domains.map(x => (x.id === d.id ? Object.assign({}, x, { prio: (x.prio % 4) + 1 }) : x))),
+        remove: () => self.setDomains(st.domains.filter(x => x.id !== d.id)),
+        onDragOver: self.allow,
+        onDrop: (e) => {
+          e.preventDefault();
+          const dr = self.drag;
+          if (!dr || dr.type !== 'money') return;
+          self.setDomains(self.state.domains.map(x => (x.id === d.id ? Object.assign({}, x, { alloc: (x.alloc || 0) + dr.amount }) : x)));
+          self.drag = null;
+        }
+      };
+    }).sort((a, b) => a.prio - b.prio);
+
+    const incomeOpts = ['jour', 'semaine', 'mois'].map(p => ({
+      key: p, label: p === 'jour' ? 'Par jour' : (p === 'semaine' ? 'Par semaine' : 'Par mois'),
+      style: { padding: '0 13px', height: '30px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap',
+        fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '9.5px', letterSpacing: '.16em', textTransform: 'uppercase',
+        background: st.incomePeriod === p ? 'var(--sg-ink)' : 'transparent',
+        color: st.incomePeriod === p ? 'var(--sg-surface)' : 'var(--sg-dim2)' },
+      pick: () => self.setS({ incomePeriod: p })
+    }));
+
+    const LEVELS = ['importante', 'secondaire', 'superflue'];
+    const levelRows = LEVELS.map(l => ({
+      key: l, label: l.charAt(0).toUpperCase() + l.slice(1), amount: money(realByLevel[l] || 0),
+      barStyle: { width: (realTotal ? (realByLevel[l] / realTotal) * 100 : 0) + '%', height: '100%',
+        background: l === 'importante' ? 'var(--sg-accent)' : (l === 'secondaire' ? 'var(--sg-accent2)' : 'var(--sg-dim2)') }
+    }));
+
+    // dépenses de la carte ouverte
+    const selExpenses = s ? (s.expenses || []).map(x => ({
+      key: x.id, label: x.label, amount: money(x.amount), level: x.level,
+      dom: (st.domains.find(d => d.id === x.domain) || {}).name || '—',
+      levelStyle: { fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '8.5px', letterSpacing: '.14em',
+        textTransform: 'uppercase', whiteSpace: 'nowrap',
+        color: x.level === 'importante' ? 'var(--sg-accent)' : (x.level === 'secondaire' ? 'var(--sg-dim)' : 'var(--sg-dim2)') },
+      remove: () => self.updSel(c => { c.expenses = (c.expenses || []).filter(y => y.id !== x.id); return c; })
+    })) : [];
+    const selSpent = s ? (s.expenses || []).reduce((a, x) => a + (x.amount || 0), 0) : 0;
+    const levelOpts = LEVELS.map(l => ({
+      key: l, label: l.charAt(0).toUpperCase() + l.slice(1),
+      style: { padding: '0 10px', height: '28px', cursor: 'pointer', background: 'transparent',
+        border: '1px solid ' + (st.eLevel === l ? 'var(--sg-accent)' : 'var(--sg-border)'),
+        color: st.eLevel === l ? 'var(--sg-accent)' : 'var(--sg-dim2)',
+        fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '8.5px', letterSpacing: '.14em', textTransform: 'uppercase' },
+      pick: () => self.setState({ eLevel: l })
+    }));
+
+    // ================= ÉQUIPE =================
+    const team = st.team;
+    const teamMembers = team.members.map(m => ({
+      key: m.id, name: m.name, role: m.role, photo: m.photo, hasPhoto: !!m.photo, noPhoto: !m.photo,
+      initials: (m.name || '?').trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase(),
+      photoStyle: { width: '34px', height: '34px', borderRadius: '50%', flex: '0 0 auto',
+        backgroundImage: 'url(' + (m.photo || '') + ')', backgroundSize: 'cover', backgroundPosition: 'center' },
+      remove: () => self.setTeam({ members: team.members.filter(x => x.id !== m.id) })
+    }));
+    const proposals = team.proposals.map(p => ({
+      key: p.id, from: p.from, title: p.title, meta: p.from + (p.note ? ' · ' + p.note : ''), status: p.status,
+      pending: p.status === 'en attente',
+      statusStyle: { fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '8.5px', letterSpacing: '.14em',
+        textTransform: 'uppercase', color: p.status === 'acceptée' ? 'var(--sg-accent)' : 'var(--sg-dim2)' },
+      accept: () => {
+        self.setState({}, () => {
+          const card = self.blank(p.title, '#0080A7');
+          card.desc = 'Proposé par ' + p.from + (p.note ? ' — ' + p.note : '');
+          self.setS({
+            backlog: self.state.backlog.concat([card]),
+            team: Object.assign({}, self.state.team, { proposals: self.state.team.proposals.map(x => (x.id === p.id ? Object.assign({}, x, { status: 'acceptée' }) : x)) })
+          });
+        });
+      },
+      refuse: () => self.setTeam({ proposals: team.proposals.map(x => (x.id === p.id ? Object.assign({}, x, { status: 'refusée' }) : x)) })
+    }));
+    const FIELDS = ['Emploi du temps du jour', 'Domaines & budget', 'Bilans', 'Étiquettes'];
+    const fieldOpts = FIELDS.map(v => ({
+      key: v, label: v,
+      style: { padding: '7px 12px', cursor: 'pointer', background: 'transparent', textAlign: 'left',
+        border: '1px solid ' + (team.field === v ? 'var(--sg-accent)' : 'var(--sg-border)'),
+        color: team.field === v ? 'var(--sg-ink)' : 'var(--sg-dim2)', fontSize: '12px' },
+      pick: () => self.setTeam({ field: v })
+    }));
+
+    // ---------- arrière-plan de l'emploi du temps ----------
+    const BGS = [
+      { k: 'none', label: 'Aucun', css: { background: 'var(--sg-surface)' } },
+      { k: 'grid', label: 'Quadrillage', css: { backgroundColor: 'var(--sg-surface)',
+        backgroundImage: 'linear-gradient(var(--sg-faint) 1px, transparent 1px), linear-gradient(90deg, var(--sg-faint) 1px, transparent 1px)',
+        backgroundSize: '27px 27px' } },
+      { k: 'dots', label: 'Points', css: { backgroundColor: 'var(--sg-surface)',
+        backgroundImage: 'radial-gradient(var(--sg-line) 1px, transparent 1px)', backgroundSize: '20px 20px' } },
+      { k: 'rules', label: 'Obliques', css: { backgroundColor: 'var(--sg-surface)',
+        backgroundImage: 'repeating-linear-gradient(135deg, var(--sg-faint) 0 1px, transparent 1px 11px)' } },
+      { k: 'wash', label: 'Voile cyan', css: { backgroundImage: 'linear-gradient(160deg, var(--sg-wash), var(--sg-surface) 62%)' } },
+      { k: 'image', label: 'Image', css: { backgroundColor: 'var(--sg-surface)',
+        backgroundImage: st.bgImg ? 'url(' + st.bgImg + ')' : 'none', backgroundSize: 'cover', backgroundPosition: 'center' } }
+    ];
+    const curBg = BGS.find(b => b.k === st.bg) || BGS[0];
+    const bgOpts = BGS.map(b => ({
+      key: b.k, label: b.label,
+      style: Object.assign({ height: '30px', padding: '0 12px', cursor: 'pointer',
+        border: '1px solid ' + (st.bg === b.k ? 'var(--sg-accent)' : 'var(--sg-border)'),
+        color: st.bg === b.k ? 'var(--sg-accent)' : 'var(--sg-dim2)',
+        fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '9px', letterSpacing: '.14em',
+        textTransform: 'uppercase', whiteSpace: 'nowrap' }, b.k === 'none' ? { background: 'transparent' } : b.css),
+      pick: () => self.setS({ bg: b.k })
+    }));
+
+    return {
+      bgOpen: st.bgOpen,
+      toggleBgPanel: () => self.setState({ bgOpen: !st.bgOpen }),
+      bgOpts: bgOpts,
+      gridWrapStyle: Object.assign({ display: 'flex', borderTop: '1px solid var(--sg-ink)',
+        borderBottom: '1px solid var(--sg-line)', overflow: 'hidden' }, curBg.css),
+      hourColStyle: { flex: '0 0 66px', borderRight: '1px solid var(--sg-line)', background: 'transparent',
+        position: 'relative', zIndex: 1 },
+      bgScrimStyle: { position: 'absolute', inset: 0, zIndex: 0,
+        background: 'var(--sg-surface)', opacity: st.bg === 'image' && st.bgImg ? 0.72 : 0, pointerEvents: 'none' },
+      onBgImage: (e) => {
+        const f = e.target.files[0]; if (!f) return;
+        const fr = new FileReader();
+        fr.onload = () => {
+          const img = new Image();
+          img.onload = () => {
+            const w = Math.min(1500, img.width), h = Math.round(img.height * (w / img.width));
+            const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+            cv.getContext('2d').drawImage(img, 0, 0, w, h);
+            self.setS({ bgImg: cv.toDataURL('image/jpeg', 0.72), bg: 'image' });
+          };
+          img.src = fr.result;
+        };
+        fr.readAsDataURL(f);
+      },
+
+      viewArgent: st.view === 'argent',
+      tabArgentStyle: tab(st.view === 'argent'),
+      setViewArgent: () => self.setState({ view: 'argent' }),
+      incomeValue: income,
+      onIncome: (e) => self.setS({ income: parseInt(e.target.value, 10) || 0 }),
+      incomeOpts: incomeOpts,
+      incomePeriodLabel: st.incomePeriod === 'jour' ? 'par jour' : (st.incomePeriod === 'semaine' ? 'par semaine' : 'par mois'),
+      allocatedLabel: money(allocated),
+      remainingLabel: money(remaining),
+      remainingStyle: { fontFamily: 'Inter,sans-serif', fontSize: '29px', fontWeight: 200, letterSpacing: '-.02em', lineHeight: 1,
+        color: remaining < 0 ? 'var(--sg-ink)' : 'var(--sg-accent)' },
+      allocBarStyle: { width: (income ? Math.min(100, (allocated / income) * 100) : 0) + '%', height: '100%', background: 'var(--sg-accent)' },
+      moneyTokens: moneyTokens,
+      tokenAmount: st.tokenAmount,
+      onTokenAmount: (e) => self.setState({ tokenAmount: e.target.value }),
+      customTokenStyle: { padding: '9px 14px', border: '1px dashed var(--sg-border)', background: 'transparent',
+        cursor: 'grab', fontFamily: 'Inter,sans-serif', fontSize: '15px', fontWeight: 300, color: 'var(--sg-ink)' },
+      onCustomDrag: (e) => { self.drag = { type: 'money', amount: parseInt(st.tokenAmount, 10) || 0 }; try { e.dataTransfer.setData('text/plain', 'mc'); } catch (x) {} },
+      domains: domains,
+      noDomains: domains.length === 0,
+      dName: st.dName,
+      onDName: (e) => self.setState({ dName: e.target.value }),
+      onDNameKey: (e) => { if (e.key === 'Enter') self.addDomainNow(); },
+      addDomain: () => self.addDomainNow(),
+      dPrioLabel: 'Priorité ' + st.dPrio + ' · ' + PRIO[st.dPrio],
+      cycleNewPrio: () => self.setState({ dPrio: (st.dPrio % 4) + 1 }),
+      dSwatches: TAGCOLORS.map(v => ({
+        key: v,
+        style: { width: '16px', height: '16px', borderRadius: '50%', background: v, cursor: 'pointer', padding: 0,
+          border: st.dColor === v ? '2px solid var(--sg-accent2)' : '1px solid var(--sg-border)' },
+        pick: () => self.setState({ dColor: v })
+      })),
+      realTotalLabel: money(realTotal),
+      levelRows: levelRows,
+      expenseRows: expenseRows.map(r => ({ key: r.k, label: r.label, amount: r.amount, card: r.card, dom: r.dom, level: r.level,
+        levelStyle: { fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '8.5px', letterSpacing: '.14em',
+          textTransform: 'uppercase', whiteSpace: 'nowrap',
+          color: r.level === 'importante' ? 'var(--sg-accent)' : (r.level === 'secondaire' ? 'var(--sg-dim)' : 'var(--sg-dim2)') } })),
+      noExpenses: expenseRows.length === 0,
+
+      selExpenses: selExpenses,
+      selSpentLabel: money(selSpent),
+      noSelExpenses: selExpenses.length === 0,
+      eLabel: st.eLabel, eAmount: st.eAmount,
+      onELabel: (e) => self.setState({ eLabel: e.target.value }),
+      onEAmount: (e) => self.setState({ eAmount: e.target.value }),
+      levelOpts: levelOpts,
+      eDomain: st.eDomain,
+      onEDomain: (e) => self.setState({ eDomain: e.target.value }),
+      domainOpts: st.domains.map(d => ({ key: d.id, id: d.id, name: d.name })),
+      addExpense: () => self.addExpenseNow(),
+
+      teamOpen: st.teamOpen,
+      openTeam: () => self.setState({ teamOpen: true }),
+      closeTeam: () => self.setState({ teamOpen: false }),
+      teamName: team.name,
+      onTeamName: (e) => self.setTeam({ name: e.target.value }),
+      teamNote: team.note,
+      onTeamNote: (e) => self.setTeam({ note: e.target.value }),
+      fieldOpts: fieldOpts,
+      teamMembers: teamMembers,
+      noTeamMembers: teamMembers.length === 0,
+      tName: st.tName, tRole: st.tRole, tPhoto: st.tPhoto,
+      tHasPhoto: !!st.tPhoto, tNoPhoto: !st.tPhoto,
+      tPhotoStyle: { width: '100%', height: '100%', backgroundImage: 'url(' + (st.tPhoto || '') + ')', backgroundSize: 'cover', backgroundPosition: 'center' },
+      onTName: (e) => self.setState({ tName: e.target.value }),
+      onTRole: (e) => self.setState({ tRole: e.target.value }),
+      onTPhoto: (e) => { const f = e.target.files[0]; if (f) self.photoToData(f, (d) => self.setState({ tPhoto: d })); },
+      addTeamMember: () => {
+        if (!st.tName.trim()) return;
+        self.setTeam({ members: team.members.concat([{ id: uid(), name: st.tName.trim(), role: st.tRole.trim(), photo: st.tPhoto }]) });
+        self.setState({ tName: '', tRole: '', tPhoto: '' });
+      },
+      proposals: proposals,
+      noProposals: proposals.length === 0,
+      pFrom: st.pFrom, pTitle: st.pTitle, pNote: st.pNote,
+      onPFrom: (e) => self.setState({ pFrom: e.target.value }),
+      onPTitle: (e) => self.setState({ pTitle: e.target.value }),
+      onPNote: (e) => self.setState({ pNote: e.target.value }),
+      addProposal: () => {
+        if (!st.pTitle.trim()) return;
+        self.setTeam({ proposals: team.proposals.concat([{ id: uid(), from: st.pFrom || 'Membre', title: st.pTitle.trim(), note: st.pNote.trim(), status: 'en attente' }]) });
+        self.setState({ pTitle: '', pNote: '' });
+      },
+      dateLabel: dateLabel,
+      themeLabel: st.theme === 'dark' ? 'Clair' : 'Sombre',
+      themeTitle: st.theme === 'dark' ? 'Passer en mode clair' : 'Passer en mode sombre',
+      toggleTheme: () => {
+        const t = self.state.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-sgos', t);
+        try { localStorage.setItem('sgos.theme', t); } catch (e) {}
+        self.setState({ theme: t });
+      },
+      mainRef: (el) => { self.mainEl = el; },
+      prevDay: () => { const d = parseISO(st.date); d.setDate(d.getDate() - 1); self.setState({ date: iso(d) }); },
+      nextDay: () => { const d = parseISO(st.date); d.setDate(d.getDate() + 1); self.setState({ date: iso(d) }); },
+      goToday: () => self.setState({ date: iso(new Date()) }),
+      setViewJour: () => self.setState({ view: 'jour' }),
+      setViewBilan: () => self.setState({ view: 'bilan' }),
+      tabJourStyle: tab(st.view === 'jour'),
+      tabBilanStyle: tab(st.view === 'bilan'),
+      viewJour: st.view === 'jour',
+      viewBilan: st.view === 'bilan',
+
+      backlogPaneStyle: { flex: '0 0 288px', minWidth: '240px', background: 'var(--sg-surface)', borderRight: '1px solid var(--sg-line)',
+        display: 'flex', flexDirection: 'column', minHeight: 0 },
+      backlog: backlog,
+      backlogEmpty: backlog.length === 0,
+      newTitle: st.newTitle,
+      onNewTitle: (e) => self.setState({ newTitle: e.target.value }),
+      onNewKey: (e) => { if (e.key === 'Enter') self.addCardNow(); },
+      addCard: () => self.addCardNow(),
+      swatches: PALETTE.map(p => ({
+        key: p.v, name: p.name,
+        style: { width: '18px', height: '18px', borderRadius: '50%', background: p.v, cursor: 'pointer',
+          border: st.newColor === p.v ? '2px solid var(--sg-accent2)' : '1px solid var(--sg-line)', outlineOffset: '2px', padding: 0 },
+        pick: () => self.setState({ newColor: p.v })
+      })),
+
+      hours: hours,
+      gridStyle: { flex: 1, position: 'relative', minWidth: 0 },
+      placed: placed,
+      onDragOverGrid: this.allow,
+      onDropGrid: this.onDropGrid,
+      onDragOverBacklog: this.allow,
+      onDropBacklog: this.onDropBacklog,
+      onDragEnd: () => { self.drag = null; },
+      showNow: st.date === iso(new Date()),
+      nowStyle: { position: 'absolute', left: 0, right: 0, top: (nowH * H) + 'px', height: '1px',
+        background: 'var(--sg-accent2)', zIndex: 5 },
+      daySummary: cards.length ? cards.length + ' carte' + (cards.length > 1 ? 's' : '') + ' · ' + durLabel(cards.reduce((a, c) => a + c.dur, 0)) + ' planifiées' : 'Rien de planifié pour l’instant',
+      dayNote: sameDayScore ? sameDayScore.note : '—',
+
+      bilans: [mkBilan('Note du jour', dayScore), mkBilan('Note de la semaine', weekScore), mkBilan('Note du mois', monthScore)],
+      weekBars: weekBars,
+
+      hasSel: !!s,
+      closeSel: () => self.setState({ selId: null }),
+      stop: (e) => e.stopPropagation(),
+      selHeadStyle: { background: 'var(--sg-surface)', color: 'var(--sg-ink)', padding: '26px 28px 22px', borderBottom: '1px solid var(--sg-line)' },
+      selDotStyle: { width: '10px', height: '10px', borderRadius: '50%', background: s ? s.color : 'var(--sg-accent)', flex: '0 0 auto', display: 'block' },
+      selTitle: s ? s.title : '',
+      onSelTitle: (e) => { const v = e.target.value; self.updSel(c => { c.title = v; return c; }); },
+      selWhen: s ? (s.start === null || s.start === undefined ? 'Hors emploi du temps' : fmt(s.start) + ' – ' + fmt(s.start + s.dur)) : '',
+      selDurLabel: s ? durLabel(s.dur) : '',
+      durMinus: () => self.updSel(c => { c.dur = Math.max(0.25, c.dur - 0.25); return c; }),
+      durPlus: () => self.updSel(c => { c.dur = Math.min(24 - (c.start || 0), c.dur + 0.25); return c; }),
+      statusOpts: statusOpts,
+      selShift: s ? (s.shift || 0) : 0,
+      onSelShift: (e) => { const v = parseInt(e.target.value, 10) || 0; self.updSel(c => { c.shift = v; return c; }); },
+      shiftHint: s && s.shift ? (s.shift > 0 ? 'en retard' : 'en avance') : '',
+      shiftHintStyle: { fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: '9.5px', letterSpacing: '.16em',
+        textTransform: 'uppercase', color: s && s.shift > 0 ? 'var(--sg-ink)' : 'var(--sg-accent)' },
+      selDesc: s ? s.desc : '',
+      onSelDesc: (e) => { const v = e.target.value; self.updSel(c => { c.desc = v; return c; }); },
+
+      subRangeLabel: s ? (s.subs || []).length + ' sous-carte' + ((s.subs || []).length > 1 ? 's' : '') : '',
+      newSubTitle: st.newSubTitle,
+      onNewSubTitle: (e) => self.setState({ newSubTitle: e.target.value }),
+      onNewSubKey: (e) => { if (e.key === 'Enter') self.addSubNow(); },
+      addSub: () => self.addSubNow(),
+      subPool: subPool,
+      subPoolEmpty: subPool.length === 0,
+      subPlaced: subPlaced,
+      subSlots: subSlots,
+      subGridStyle: { flex: 1, position: 'relative', minWidth: 0 },
+      onDragOverSubGrid: this.allow,
+      onDropSubGrid: this.onDropSubGrid,
+      onDragOverSubPool: this.allow,
+      onDropSubPool: this.onDropSubPool,
+
+      tagChips: tagChips,
+      noTags: st.tags.length === 0,
+      tagSwatches: tagSwatches,
+      newTagName: st.newTagName,
+      onNewTagName: (e) => self.setState({ newTagName: e.target.value }),
+      onNewTagKey: (e) => { if (e.key === 'Enter') self.addTagNow(); },
+      addTag: () => self.addTagNow(),
+      tagStats: tagStats,
+      tagStatsEmpty: tagStats.length === 0,
+      periodOpts: periodOpts,
+      detailGroups: detailGroups,
+      hasTopTag: !!topTag,
+      topTagLabel: topTag ? topTag.name : '',
+      topTagDetail: topTag ? topTag.rate + ' % de son temps réalisé · ' + topTag.pct + ' % de la période' : '',
+      topTagStyle: { width: '9px', height: '9px', borderRadius: '50%', background: topTag ? topTag.color : 'var(--sg-surface)', display: 'block', flex: '0 0 auto' },
+
+      selMembers: selMembers,
+      newMemberName: st.mName, newMemberDesc: st.mDesc, newMemberPhoto: st.mPhoto,
+      newMemberHasPhoto: !!st.mPhoto, newMemberNoPhoto: !st.mPhoto,
+      newMemberPhotoStyle: { width: '100%', height: '100%', backgroundImage: 'url(' + (st.mPhoto || '') + ')', backgroundSize: 'cover', backgroundPosition: 'center' },
+      onMemberName: (e) => self.setState({ mName: e.target.value }),
+      onMemberDesc: (e) => self.setState({ mDesc: e.target.value }),
+      onMemberPhoto: (e) => { const f = e.target.files[0]; if (f) self.photoToData(f, (d) => self.setState({ mPhoto: d })); },
+      addMember: () => {
+        if (!st.mName.trim()) return;
+        self.updSel(c => { c.members = (c.members || []).concat([{ id: uid(), name: st.mName.trim(), desc: st.mDesc.trim(), photo: st.mPhoto }]); return c; });
+        self.setState({ mName: '', mDesc: '', mPhoto: '' });
+      },
+
+      selCheck: selCheck,
+      checkLabel: s && s.check && s.check.length ? s.check.filter(i => i.done).length + ' / ' + s.check.length : '',
+      newCheck: st.newCheck,
+      onNewCheck: (e) => self.setState({ newCheck: e.target.value }),
+      onNewCheckKey: (e) => { if (e.key === 'Enter') self.addCheckNow(); },
+      addCheck: () => self.addCheckNow(),
+
+      selDocs: selDocs,
+      onDocs: (e) => {
+        const files = Array.prototype.slice.call(e.target.files);
+        if (!files.length) return;
+        self.updSel(c => {
+          c.docs = (c.docs || []).concat(files.map(f => ({ id: uid(), name: f.name, size: Math.round(f.size / 1024) + ' Ko' })));
+          return c;
+        });
+        e.target.value = '';
+      },
+
+      sendToBacklog: () => {
+        const id = st.selId;
+        const card = self.cards().find(c => c.id === id);
+        if (!card) return;
+        const days = Object.assign({}, self.state.days);
+        days[st.date] = { cards: self.cards().filter(c => c.id !== id) };
+        self.setS({ days: days, backlog: self.state.backlog.concat([Object.assign({}, card, { start: null })]) });
+      },
+      deleteCard: () => {
+        const id = st.selId;
+        const days = Object.assign({}, self.state.days);
+        days[st.date] = { cards: self.cards().filter(c => c.id !== id) };
+        self.setS({ days: days, backlog: self.state.backlog.filter(c => c.id !== id), selId: null });
+      }
+    };
+  }
+
+  addCardNow() {
+    const t = this.state.newTitle.trim();
+    if (!t) return;
+    this.setS({ backlog: this.state.backlog.concat([this.blank(t, this.state.newColor)]), newTitle: '' });
+  }
+  addDomainNow() {
+    const n = this.state.dName.trim();
+    if (!n) return;
+    this.setS({ domains: this.state.domains.concat([{ id: uid(), name: n, color: this.state.dColor, prio: this.state.dPrio, alloc: 0 }]), dName: '' });
+  }
+  addExpenseNow() {
+    const l = this.state.eLabel.trim();
+    const a = parseInt(this.state.eAmount, 10) || 0;
+    if (!l || !a) return;
+    const ex = { id: uid(), label: l, amount: a, level: this.state.eLevel, domain: this.state.eDomain };
+    this.updSel(c => { c.expenses = (c.expenses || []).concat([ex]); return c; });
+    this.setState({ eLabel: '', eAmount: '' });
+  }
+  addTagNow() {
+    const n = this.state.newTagName.trim();
+    if (!n) return;
+    const tag = { id: uid(), name: n, color: this.state.newTagColor };
+    const next = this.state.tags.concat([tag]);
+    this.setState({ tags: next, newTagName: '' }, () => {
+      if (this.state.selId) this.updSel(c => { c.tags = (c.tags || []).concat([tag.id]); return c; });
+      else this.persist();
+    });
+  }
+  addSubNow() {
+    const t = this.state.newSubTitle.trim();
+    if (!t) return;
+    this.updSel(c => { c.subs = (c.subs || []).concat([{ id: uid(), title: t, off: null, dur: 0.5, done: false }]); return c; });
+    this.setState({ newSubTitle: '' });
+  }
+  addCheckNow() {
+    const t = this.state.newCheck.trim();
+    if (!t) return;
+    this.updSel(c => { c.check = (c.check || []).concat([{ id: uid(), txt: t, done: false }]); return c; });
+    this.setState({ newCheck: '' });
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# Vérification : à chaque envoi de code, on s'assure que SGOS se construit correctement.
+name: Vérification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  construire:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: desktop/src-tauri
+
+      # 1. Assemble la page (SGOS.html, app/index.html, desktop/dist/index.html)
+      - name: Assembler la page
+        run: python build.py
+
+      # 2. Vérifie que la page générée n'est pas vide
+      - name: Contrôler les fichiers générés
+        shell: bash
+        run: |
+          test -s SGOS.html && test -s app/index.html && test -s desktop/dist/index.html
+          grep -q "SGOS_IDEES" desktop/dist/index.html
+
+      # 4. Vérifie que le programme Windows se compile (sans publier l'installateur)
+      - name: Compiler le programme Windows
+        working-directory: desktop
+        run: |
+          npm ci
+          npx tauri build

@@ -1,0 +1,59 @@
+# Publication : quand on pousse un tag « v… » (ex. v1.0.0), GitHub construit
+# l'installateur Windows et le publie dans la page « Releases » du dépôt.
+name: Publier l'installateur
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write   # nécessaire pour créer la Release et y joindre le .exe
+
+jobs:
+  publier:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: desktop/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: desktop/src-tauri
+
+      # Régénère desktop/dist/index.html (la page que le programme affiche)
+      - name: Assembler la page
+        run: python build.py
+
+      - name: Installer les dépendances
+        working-directory: desktop
+        run: npm ci
+
+      # Compile le programme et publie le .exe dans la Release
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          projectPath: desktop
+          tagName: ${{ github.ref_name }}
+          releaseName: 'SGOS ${{ github.ref_name }}'
+          releaseBody: |
+            ## Installer SGOS sur Windows
+            1. Téléchargez **SGOS_…_x64-setup.exe** ci-dessous (section « Assets »).
+            2. Double-cliquez dessus → *Installer*.
+            3. Si Windows affiche « Windows a protégé votre ordinateur » : cliquez sur
+               **Informations complémentaires** puis **Exécuter quand même**.
+               (L'installateur n'est pas signé numériquement : c'est normal.)
+          releaseDraft: false
+          prerelease: false
