@@ -4,8 +4,8 @@
 > application. **Aucun compte, aucun serveur : tes données restent sur ton appareil.**
 
 <!-- Remplacez soughoumouad1 par votre nom d'utilisateur GitHub dans ce fichier. -->
-[![Dernière version](https://img.shields.io/github/v/release/soughoumouad1/sgos?label=version)](https://github.com/soughoumouad1/sgos/releases/latest)
-[![Vérification](https://github.com/soughoumouad1/sgos/actions/workflows/verif.yml/badge.svg)](https://github.com/soughoumouad1/sgos/actions/workflows/verif.yml)
+[![Dernière version](https://img.shields.io/github/v/release/mouadsg11/sgos?label=version)](https://github.com/mouadsg11/sgos/releases/latest)
+[![Vérification](https://github.com/mouadsg11/sgos/actions/workflows/verif.yml/badge.svg)](https://github.com/mouadsg11/sgos/actions/workflows/verif.yml)
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
 
 ## Captures d'écran
@@ -42,8 +42,8 @@ Mode d'emploi détaillé : [docs/GUIDE.md](docs/GUIDE.md).
 
 | Appareil | Fichier | Où |
 |---|---|---|
-| **Windows 10 / 11** | `SGOS_…_x64-setup.exe` | [Dernière version (Releases)](https://github.com/soughoumouad1/sgos/releases/latest) |
-| **Android 7+** | `SGOS.apk` | [Dernière version (Releases)](https://github.com/soughoumouad1/sgos/releases/latest) |
+| **Windows 10 / 11** | `SGOS_…_x64-setup.exe` | [Dernière version (Releases)](https://github.com/mouadsg11/sgos/releases/latest) |
+| **Android 7+** | `SGOS.apk` | [Dernière version (Releases)](https://github.com/mouadsg11/sgos/releases/latest) |
 
 ## Installer SGOS sur Android
 
@@ -60,7 +60,7 @@ Stats · Profil*. La cloche 🔔 active les rappels.
 
 ## Installer SGOS (utilisateur Windows)
 
-1. Ouvre la page **[Releases](https://github.com/soughoumouad1/sgos/releases/latest)**.
+1. Ouvre la page **[Releases](https://github.com/mouadsg11/sgos/releases/latest)**.
 2. Dans **Assets**, télécharge **`SGOS_…_x64-setup.exe`**.
 3. Double-clique dessus, puis *Installer*. Pas besoin d'être administrateur.
 4. SGOS apparaît dans le menu Démarrer (et sur le Bureau).
